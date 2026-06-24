@@ -84,16 +84,16 @@ namespace WatchYourBack
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.CompareTag("BackHurtBox") == false)
+            if (other.CompareTag("PlayerAttackHitBox") == false)
             {
                 return;
             }
-            else if (other.CompareTag("BackHurtBox") == true)
+            else if (other.CompareTag("PlayerAttackHitBox") == true)
             {
                 EnemyStateManager enemy = other.GetComponentInParent<EnemyStateManager>();
-                enemy.ChangeState(new KnockdownState()); 
-                Debug.Log("뒷통수 치기 성공! 복수를 성공했다.");
-
+                 Debug.Log("뒷통수 치기 성공! 복수를 성공했다.");
+                 enemy.ChangeState(new KnockdownState()); 
+                
             }
 
         }

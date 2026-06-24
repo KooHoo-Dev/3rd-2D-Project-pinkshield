@@ -1067,6 +1067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 4
+  HitBox: {fileID: 0}
 --- !u!70 &196796961
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -50959,7 +50960,7 @@ GameObject:
   - component: {fileID: 1194352827}
   m_Layer: 0
   m_Name: AttackHitBox
-  m_TagString: Untagged
+  m_TagString: PlayerAttackHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
