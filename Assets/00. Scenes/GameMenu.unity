@@ -728,10 +728,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1361,25 +1361,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46f5f489ab6e4f2a90a70aee47d1a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.GameMenu
-  Bosses:
-  - {fileID: 2095346844}
-  - {fileID: 1020034644}
-  - {fileID: 1068342712}
-  - {fileID: 1618933251}
-  MainPlayer: {fileID: 611578961}
-  Title: {fileID: 1829515029}
-  PressEnter: {fileID: 1938683180}
-  Menu: {fileID: 1648569707}
-  MenuCursor: {fileID: 0}
-  MenuItemPositions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  BossFadeInDuration: 0.5
-  currentState: 0
-  menuIndex: 0
-  bossDisplayDuration: 0.4
-  elementDisplayDelay: 0.5
 --- !u!114 &1482280972
 MonoBehaviour:
   m_ObjectHideFlags: 0

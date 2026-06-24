@@ -20,7 +20,9 @@ public class AttackState : IEnemyState
     }
 
     public IEnumerator Execute(EnemyStateManager stateManager)
-    {
+    {   
+         
+        
         yield return new WaitForSeconds(stateManager.AttackCooldown);
 
         if (ReceivedFrontalHit == true)
@@ -34,12 +36,14 @@ public class AttackState : IEnemyState
             stateManager.ChangeState(new ChaseState());
             yield break;
         }
+        else stateManager.ChangeState(new ChaseState());
     }
 
     public void Exit(EnemyStateManager stateManager)
     {
         ReceivedFrontalHit = false;
         Debug.Log("[AttackState] Exit");
+        
     }
 
     // 전방 공격을 받은 경우 딜레이 후 반격 공격을 수행한다

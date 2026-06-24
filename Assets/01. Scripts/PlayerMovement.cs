@@ -5,29 +5,34 @@ using UnityEngine.InputSystem;
 
 
 
+
 namespace WatchYourBack
 {
     public class PlayerMovement : MonoBehaviour
-{   
-
-    private const string horizontal = "Horizontal";
-    private const string vertical = "Vertical";
-    private const string lastHorizontal = "LastHorizontal";
-    private const string lastVertical = "LastVertical";
-    private const string isAttack = "IsAttack";
-
-    [SerializeField] private float moveSpeed = 4f;
-
-    private Vector2 movement;
-    private Rigidbody2D rb;
-    private Animator animator;
+    {   
+    
+        private const string horizontal = "Horizontal";
+        private const string vertical = "Vertical";
+        private const string lastHorizontal = "LastHorizontal";
+        private const string lastVertical = "LastVertical";
+        private const string isAttack = "IsAttack";
+    
+        [SerializeField] private float moveSpeed = 4f;
+        [SerializeField] private Collider2D HitBox;
+        
+        private Vector2 movement;
+        private Rigidbody2D rb;
+        private Animator animator;
+        
 
 
         private void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponentInChildren<Animator>();
-
+            //enemyStateManager = GetComponent<EnemyStateManager>();
+            // 같은 게임오브젝트에 있는 컴포넌트가 아니라서 null임
+            
             if(animator == null)
             {
                 Debug.LogError("Animator를 찾을 수 없다!");
@@ -71,10 +76,25 @@ namespace WatchYourBack
             else if (SimpleInput.GetKeyUp(Key.Z))
             {
                 animator.SetBool(isAttack, false);
-            } 
-                
+            }                
 
+        }
 
+        // 플레이어가 뒷통수를 치면 DeadState 로 전환한다
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("BackHurtBox") == false)
+            {
+                return;
+            }
+            else if (other.CompareTag("BackHurtBox") == true)
+            {
+                EnemyStateManager enemy = other.GetComponentInParent<EnemyStateManager>();
+                enemy.ChangeState(new KnockdownState()); 
+                Debug.Log("뒷통수 치기 성공! 복수를 성공했다.");
+
+            }
 
         }
     }

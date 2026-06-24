@@ -104,6 +104,7 @@ public class EnemyStateManager : MonoBehaviour
     {
         float angle = GetAngleFromDirection(MoveDirection);
         RotateTransform(attackHitBox.transform, angle);
+        
     }
 
     // 이동 방향 → 뒤통수·공격 히트박스 회전 각도
@@ -158,6 +159,7 @@ public class EnemyStateManager : MonoBehaviour
     public void PlayKnockdown()
     {
         Animator.SetTrigger("KnockDown");
+        
     }
 
     // Animator 파라미터 설정 헬퍼 — 방향에 맞는 애니메이션을 재생한다
@@ -217,4 +219,11 @@ public class EnemyStateManager : MonoBehaviour
         Target = null;
         Debug.Log("[EnemyStateManager] 플레이어 시야 이탈 → Target 해제");
     }
+
+
+    
+
+
+
+    
 }
