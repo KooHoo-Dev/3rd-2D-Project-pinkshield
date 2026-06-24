@@ -80,23 +80,9 @@ namespace WatchYourBack
 
         }
 
-        // 플레이어가 뒷통수를 치면 DeadState 로 전환한다
+       
 
-        private void OnTriggerEnter2D(Collider2D other)
-        {
-            if (other.CompareTag("PlayerAttackHitBox") == false)
-            {
-                return;
-            }
-            else if (other.CompareTag("PlayerAttackHitBox") == true)
-            {
-                EnemyStateManager enemy = other.GetComponentInParent<EnemyStateManager>();
-                 Debug.Log("뒷통수 치기 성공! 복수를 성공했다.");
-                 enemy.ChangeState(new KnockdownState()); 
-                
-            }
-
-        }
+        
     }
 }
 
