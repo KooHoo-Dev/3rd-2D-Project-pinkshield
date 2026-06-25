@@ -31713,20 +31713,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1393156447}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b9a4b15cd425343b5d661abefd566f, type: 3}
+  m_Script: {fileID: 11500000, guid: b72cdc529ed41784abfd5ec2d84ae9d4, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyStateManager
-  Animator: {fileID: 0}
-  Rigidbody: {fileID: 0}
-  viewCollider: {fileID: 1645443628}
-  attackHitBox: {fileID: 1086239538}
-  backHitBox: {fileID: 1729999977}
-  moveSpeed: 3
-  patrolPoint: {fileID: 1162789735}
-  attackCooldown: 0.8
-  counterAttackDelay: 0.5
-  searchDuration: 3
-  knockdownCanvas: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.EnemyMovement
+  speed: 3
+  PatrolPosition: {fileID: 1162789735}
 --- !u!1 &1459708523
 GameObject:
   m_ObjectHideFlags: 0

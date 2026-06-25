@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -13,7 +14,7 @@ namespace WatchYourBack
 
         [Header("Enemy Settings")]
         [field: SerializeField] private float speed = 3.0f;
-        [SerializeField] private Transform PatrolPoint;
+        [field: SerializeField] private Transform PatrolPosition;
 
         
 
@@ -21,26 +22,26 @@ namespace WatchYourBack
         private Rigidbody2D rb;
         private Animator anim;
         private Transform player;
-        private Vector2 originPosition;
+        private Transform EnemySpawnPoint;
         private bool isChasing = false;
+        private bool isPatroling = false;
+        private float idleDuration = 2.0f;
 
         private void Start()
         {
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponentInChildren<Animator>();
-            PatrolPoint = GetComponent<Transform>();
+            
         }
 
         private void Update()
         {
             enemyIdle();
             enemyPatrol();
-
-
-            enemyMove();
+            enemyChasing();
         }
 
-        private void enemyMove()
+        private void enemyChasing()
         {
             if (isChasing == true)
             {
@@ -53,22 +54,27 @@ namespace WatchYourBack
         }
 
 
-        private void enemyIdle()
+        private IEnumerator enemyIdle()
         {
             rb.linearVelocity = Vector2.zero;
             anim.SetBool(isMoving, false);
+
+            yield return null;
         }
 
         private void enemyPatrol()
         {
-            Vector3 patrolPoint;
-            originPosition = transform.position;
-            patrolPoint = (PatrolPoint.position - (Vector3)originPosition).normalized * -1f;
+            if (isChasing == true)
+            {
+                EnemySpawnPoint = gameObject.transform;
 
-            rb.linearVelocity = patrolPoint * speed;
-            anim.SetBool(isMoving, true);
-            anim.SetFloat(moveX, patrolPoint.x);
-            anim.SetFloat(moveY, patrolPoint.y);
+                Vector2 patrolPoint = (PatrolPosition.position - EnemySpawnPoint.position).normalized;
+
+                rb.linearVelocity = patrolPoint * speed;
+                anim.SetBool(isMoving, true);
+                anim.SetFloat(moveX, patrolPoint.x);
+                anim.SetFloat(moveY, patrolPoint.y);
+            }
         }
 
 
