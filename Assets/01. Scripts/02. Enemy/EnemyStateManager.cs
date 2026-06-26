@@ -29,13 +29,20 @@ namespace WatchYourBack
         public float StopDistance = 0.5f;   // 플레이어와 유지할 최소 거리
         public float FlipThreshold = 0.1f;  // 방향 반전을 허용할 최소 이동량
 
+        [Header("Rotation Settings")]
+        public float RotationSpeed = 10f; // 회전의 부드러운 정도
+
+        
+
 
         public LayerMask ObstacleLayer;
         public bool IsGoingToPatrolPoint = true;
 
         private IEnemyState _currentState;
         private Coroutine _stateCoroutine;
-        
+        private float _targetAttackRot;
+        private float _targetHurtRot;
+        private float _targetSightRot;
 
         private void Awake()
         {
@@ -127,31 +134,66 @@ namespace WatchYourBack
             return false;
         }
 
-        public void UpdateBoxRotations(Vector2 direction)
+        public void UpdateBoxRotations()
         {
-            if (direction.sqrMagnitude < 0.01f) return;
+            float moveX = Anim.GetFloat("MoveX");
+            float moveY = Anim.GetFloat("MoveY");
 
-            float absX = Mathf.Abs(direction.x);
-            float absY = Mathf.Abs(direction.y);
-
-            if (absX > absY) // 좌우 이동이 클 때
+            // 정지 상태일 때는 마지막 목표 각도를 유지합니다
+            if (Mathf.Abs(moveX) < 0.01f && Mathf.Abs(moveY) < 0.01f)
             {
-                if (direction.x > 0) SetRotations(0f, 90f, 0f);    // 우
-                else SetRotations(180f, 270f, 180f);               // 좌
+                 ApplyRotations();
+                return;
             }
-            else // 상하 이동이 클 때
+
+            float absX = Mathf.Abs(moveX);
+            float absY = Mathf.Abs(moveY);
+
+            // X, Y 중 큰 값을 기준으로 목표 각도를 0~360도 양수값으로 설정합니다 [2]
+            if (absX > absY)
             {
-                if (direction.y > 0) SetRotations(90f, 180f, 90f);  // 위
-                else SetRotations(270f, 0f, 270f);                   // 아래
+                if (moveX > 0) SetTargetAngles(90f, 90f, 0f);    // 오른쪽
+                else SetTargetAngles(270f, 270f, 180f);          // 왼쪽
+            }
+            else
+            {
+                if (moveY > 0) SetTargetAngles(180f, 180f, 90f); // 위
+                else SetTargetAngles(0f, 0f, 270f);              // 아래
+            }
+
+             ApplyRotations();
+        }
+
+        private void SetTargetAngles(float attack, float hurt, float sight)
+        {
+            _targetAttackRot = attack;
+            _targetHurtRot = hurt;
+            _targetSightRot = sight;
+        }
+
+        private void ApplyRotations()
+        {
+            // 1. 공격 히트박스와 뒤통수 허트박스는 즉시 회전하여 정확한 방향을 가리킵니다. 
+            AttackHitbox.localEulerAngles = new Vector3(0, 0, _targetAttackRot);
+            BackHurtBox.localEulerAngles = new Vector3(0, 0, _targetHurtRot);
+
+            // 2. 시야 박스만 보간을 사용하여 부드럽게 회전합니다. 
+            float currentSight = SightBox.localEulerAngles.z;
+            float nextSight = Mathf.LerpAngle(currentSight, _targetSightRot, Time.deltaTime * RotationSpeed);
+            
+            SightBox.localEulerAngles = new Vector3(0, 0, nextSight);
+        }
+       
+        public void OnBackHit(Collider2D collision)
+        {
+            // 플레이어의 공격 히트박스 태그가 "PlayerAttack"이라고 가정
+            if (collision.CompareTag("PlayerAttack") == true)
+            {
+                Debug.Log("뒤통수 피격! 즉시 다운 상태로 전환");
+                ChangeState(new EnemyKnockDownState());
             }
         }
 
-        private void SetRotations(float attackRot, float hurtRot, float sightRot)
-        {
-            AttackHitbox.localEulerAngles = new Vector3(0, 0, attackRot);
-            BackHurtBox.localEulerAngles = new Vector3(0, 0, hurtRot);
-            SightBox.localEulerAngles = new Vector3(0, 0, sightRot);
-        }
     }
 
 }
