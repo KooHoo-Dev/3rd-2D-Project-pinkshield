@@ -16,9 +16,7 @@ namespace WatchYourBack
         [field: SerializeField] private float speed = 3.0f;
         [field: SerializeField] private Transform PatrolPosition;
 
-        
-
-        
+                
         private Rigidbody2D rb;
         private Animator anim;
         private Transform player;
@@ -36,9 +34,12 @@ namespace WatchYourBack
 
         private void Update()
         {
-            enemyIdle();
-            enemyPatrol();
+            //enemyIdle();
+            //enemyPatrol();
             enemyChasing();
+
+
+
         }
 
         private void enemyChasing()
@@ -64,7 +65,9 @@ namespace WatchYourBack
 
         private void enemyPatrol()
         {
-            if (isChasing == true)
+            isPatroling = true;
+
+            if (isPatroling == true)
             {
                 EnemySpawnPoint = gameObject.transform;
 
@@ -75,6 +78,10 @@ namespace WatchYourBack
                 anim.SetFloat(moveX, patrolPoint.x);
                 anim.SetFloat(moveY, patrolPoint.y);
             }
+
+            
+
+
         }
 
 
