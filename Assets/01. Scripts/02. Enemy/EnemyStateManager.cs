@@ -186,7 +186,7 @@ namespace WatchYourBack
        
         public void OnBackHit(Collider2D collision)
         {
-            // 플레이어의 공격 히트박스 태그가 "PlayerAttack"이라고 가정
+            // 플레이어의 공격 히트박스 태그가 "PlayerAttack"
             if (collision.CompareTag("PlayerAttack") == true)
             {
                 Debug.Log("뒤통수 피격! 즉시 다운 상태로 전환");
