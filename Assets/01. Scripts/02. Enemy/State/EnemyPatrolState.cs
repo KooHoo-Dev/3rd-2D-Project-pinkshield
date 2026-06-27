@@ -18,6 +18,11 @@ namespace WatchYourBack
 
             while (Vector2.Distance(manager.transform.position, targetPos) > 0.1f)
             {
+                if (manager == null)
+                {
+                    yield break;
+                }
+
                 if (manager.CheckPlayerInSight() == true)
                 {
                     manager.ChangeState(new EnemyChaseState());
@@ -26,6 +31,8 @@ namespace WatchYourBack
 
                 Vector2 direction = (targetPos - (Vector2)manager.transform.position).normalized;
                 manager.Move(direction);
+                
+
                 yield return null;
             }
 

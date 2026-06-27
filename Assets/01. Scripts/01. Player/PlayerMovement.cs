@@ -2,6 +2,8 @@ using UnityEngine;
 using UnityEngine.Animations;
 using Study.Utilities;
 using UnityEngine.InputSystem;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 
@@ -18,8 +20,13 @@ namespace WatchYourBack
         private const string isAttack = "IsAttack";
     
         [SerializeField] private float moveSpeed = 4f;
-        [SerializeField] private Collider2D HitBox;
+        [SerializeField] private Collider2D AttackHitBox;
+        [SerializeField] private GameObject gameOverUI;
+
+        private bool isKnockDown = false;
         
+
+
         private Vector2 movement;
         private Rigidbody2D rb;
         private Animator animator;
@@ -42,6 +49,12 @@ namespace WatchYourBack
 
        private void Update()
         {
+            if (isKnockDown == true) return; // 다운 상태면 로직 중단
+            if (SimpleInput.GetKeyDown(Key.F1))
+            {
+                Restart();
+            }
+
             Attack();
             MovementControl();
 
@@ -80,10 +93,39 @@ namespace WatchYourBack
 
         }
 
+        public void KnockDown()
+        {
+            if (isKnockDown == true) return; // 중복 실행 방지
 
-       
+            isKnockDown = true;
+            rb.linearVelocity = Vector2.zero; // 즉시 정지
+            animator.SetTrigger("OnKnockDown"); // 애니메이션 재생
 
-        
+            StartCoroutine(KnockDownRoutine());
+        }
+
+        private IEnumerator KnockDownRoutine()
+        {
+            // 1. 컷신 및 애니메이션 대기 (예: 2초)
+            yield return new WaitForSeconds(2f);
+
+            // 2. 게임오버 UI 활성화
+            if (gameOverUI != null)
+            {
+                gameOverUI.SetActive(true);
+            }
+        }
+
+        public void Restart()
+        {   
+
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            SceneManager.LoadScene(currentSceneIndex);                       
+        }
+
+
+
     }
 }
 

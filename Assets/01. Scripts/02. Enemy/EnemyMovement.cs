@@ -16,7 +16,7 @@ namespace WatchYourBack
         [field: SerializeField] private float speed = 3.0f;
         [field: SerializeField] private Transform PatrolPosition;
 
-                
+
         private Rigidbody2D rb;
         private Animator anim;
         private Transform player;
@@ -29,7 +29,7 @@ namespace WatchYourBack
         {
             rb = GetComponent<Rigidbody2D>();
             anim = GetComponentInChildren<Animator>();
-            
+
         }
 
         private void Update()
@@ -79,7 +79,7 @@ namespace WatchYourBack
                 anim.SetFloat(moveY, patrolPoint.y);
             }
 
-            
+
 
 
         }

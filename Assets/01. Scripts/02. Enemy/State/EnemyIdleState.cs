@@ -12,6 +12,11 @@ namespace WatchYourBack
             float timer = 0f;
             while (timer < 2.0f)
             {
+                if (manager == null)
+                {
+                    yield break;
+                }
+
                 timer += Time.deltaTime;
 
                 // 플레이어 발견 시 즉시 추격
@@ -20,6 +25,7 @@ namespace WatchYourBack
                     manager.ChangeState(new EnemyChaseState());
                     yield break;
                 }
+
                 yield return null;
             }
             // 2초 지나면 순찰 시작

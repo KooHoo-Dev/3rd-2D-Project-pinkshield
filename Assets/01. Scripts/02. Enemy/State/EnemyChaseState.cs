@@ -5,10 +5,12 @@ namespace WatchYourBack
 {
     public class EnemyChaseState : IEnemyState
     {
+        private const float LostTimeLimit = 3.0f;
+
         private float _lostTimer = 0f;
         private Vector2 _lastSeenPosition;
 
-        public void Enter(EnemyStateManager manager) 
+        public void Enter(EnemyStateManager manager)
         {
             _lostTimer = 0f;
         }
@@ -21,25 +23,22 @@ namespace WatchYourBack
 
                 if (canSeePlayer == true)
                 {
-                    // 1. 시야 내에 있으면 타이머 리셋 및 위치 갱신
                     _lostTimer = 0f;
                     _lastSeenPosition = manager.Player.position;
-                    
-                    float distance = Vector2.Distance(manager.transform.position, _lastSeenPosition);
 
-                    // 2. 공격 사거리 우선 체크
+                    // 공격 범위 안 → AttackState로 전환
                     if (manager.CheckPlayerInAttackRange() == true)
                     {
-                        // 공격 실행 (실행 중에는 이 루프가 여기서 대기함)
-                        yield return manager.StartCoroutine(PerformAttack(manager));
-                        // 공격이 끝나면 바로 다음 루프에서 시야와 거리를 재측정하여 추격 재개
+                        manager.ChangeState(new EnemyAttackState());
+                        yield break; // ← 반드시 필요. 없으면 같은 프레임에 루프 계속 실행됨
                     }
-                    // 3. 사거리 밖이면 정지 거리 확인 후 이동
-                    else if (distance > manager.StopDistance)
+
+                    // 정지 거리 밖 → 플레이어 방향으로 이동
+                    float distance = Vector2.Distance(manager.transform.position, _lastSeenPosition);
+                    if (distance > manager.StopDistance)
                     {
-                        Vector2 direction = (_lastSeenPosition - (Vector2)manager.transform.position).normalized;
+                        Vector2 direction = GetDirectionTo(manager, _lastSeenPosition);
                         manager.Move(direction);
-                        manager.UpdateBoxRotations(); // 애니메이터 기반 회전 갱신
                     }
                     else
                     {
@@ -48,14 +47,13 @@ namespace WatchYourBack
                 }
                 else
                 {
-                    // 4. 시야에서 놓쳤을 때만 마지막 위치로 3초간 이동
+                    // 시야를 잃으면 마지막 위치로 3초간 이동 후 Idle
                     _lostTimer += Time.deltaTime;
-                    
-                    Vector2 direction = (_lastSeenPosition - (Vector2)manager.transform.position).normalized;
-                    manager.Move(direction);
-                    manager.UpdateBoxRotations();
 
-                    if (_lostTimer >= 3.0f)
+                    Vector2 direction = GetDirectionTo(manager, _lastSeenPosition);
+                    manager.Move(direction);
+
+                    if (_lostTimer >= LostTimeLimit)
                     {
                         manager.ChangeState(new EnemyIdleState());
                         yield break;
@@ -63,20 +61,22 @@ namespace WatchYourBack
                 }
 
                 yield return null;
+
+                if (manager == null)
+                {
+                    yield break;
+                }
             }
         }
 
-        private IEnumerator PerformAttack(EnemyStateManager manager)
+        public void Exit(EnemyStateManager manager)
         {
             manager.Stop();
-            manager.SetAttackAnimation(true);
-
-            // 0.8초간 공격 애니메이션 및 쿨타임 대기
-            yield return new WaitForSeconds(0.8f);
-
-            manager.SetAttackAnimation(false);
         }
 
-        public void Exit(EnemyStateManager manager) => manager.Stop();
+        private Vector2 GetDirectionTo(EnemyStateManager manager, Vector2 target)
+        {
+            return (target - (Vector2)manager.transform.position).normalized;
+        }
     }
 }

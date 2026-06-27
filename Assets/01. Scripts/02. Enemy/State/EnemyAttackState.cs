@@ -9,9 +9,11 @@ namespace WatchYourBack
 
         public void Enter(EnemyStateManager manager)
         {
-            // 공격 시작 시 이동 정지 및 애니메이션 파라미터 설정 [1]
+            // 공격 시작 시 이동 정지 및 애니메이션 파라미터 설정 [1]            
             manager.Stop();
+            manager.UpdateBoxRotations();
             manager.Anim.SetBool("IsAttack", true);
+            
         }
 
         public IEnumerator Execute(EnemyStateManager manager)
@@ -42,7 +44,10 @@ namespace WatchYourBack
                     yield break;
                 }
 
-                yield return null;
+                if (manager == null)
+                {
+                    yield break;
+                }
             }
         }
 

@@ -2,6 +2,7 @@ using Study.Utilities;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace WatchYourBack
 {
@@ -337,7 +338,7 @@ namespace WatchYourBack
         private void OnGameStartSelected()
         {
             Debug.Log("게임 시작!");
-            // TODO: 게임 시작 로직 구현
+            SceneManager.LoadScene(1);
         }
 
         /// <summary>

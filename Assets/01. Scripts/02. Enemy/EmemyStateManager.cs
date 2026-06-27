@@ -1,5 +1,5 @@
-using System.Collections;
 using UnityEngine;
+
 
 namespace WatchYourBack
 {
@@ -17,7 +17,7 @@ namespace WatchYourBack
 
         [Header("Box Transforms")]
         public Transform SightBox;      // 회전 제어용
-        public Transform AttackHitbox;   // 회전 제어용
+        public Transform AttackRangebox;   // 회전 제어용
         public Transform BackHurtBox;    // 회전 제어용
 
         [Header("Box Colliders")]
@@ -32,11 +32,12 @@ namespace WatchYourBack
         [Header("Rotation Settings")]
         public float RotationSpeed = 10f; // 회전의 부드러운 정도
 
-        
+
 
 
         public LayerMask ObstacleLayer;
         public bool IsGoingToPatrolPoint = true;
+        public Vector2 MoveDirection { get; set; }
 
         private IEnemyState _currentState;
         private Coroutine _stateCoroutine;
@@ -74,12 +75,14 @@ namespace WatchYourBack
             Anim.SetBool("IsMoving", true);
             Anim.SetFloat("MoveX", direction.x);
             Anim.SetFloat("MoveY", direction.y);
+            UpdateBoxRotations();
         }
 
         public void Stop()
         {
             Rb.linearVelocity = Vector2.zero;
             Anim.SetBool("IsMoving", false);
+            UpdateBoxRotations();
         }
 
         public void SetAttackAnimation(bool isAttack)
@@ -142,7 +145,7 @@ namespace WatchYourBack
             // 정지 상태일 때는 마지막 목표 각도를 유지합니다
             if (Mathf.Abs(moveX) < 0.01f && Mathf.Abs(moveY) < 0.01f)
             {
-                 ApplyRotations();
+                ApplyRotations();
                 return;
             }
 
@@ -161,7 +164,7 @@ namespace WatchYourBack
                 else SetTargetAngles(0f, 0f, 270f);              // 아래
             }
 
-             ApplyRotations();
+            ApplyRotations();
         }
 
         private void SetTargetAngles(float attack, float hurt, float sight)
@@ -174,16 +177,16 @@ namespace WatchYourBack
         private void ApplyRotations()
         {
             // 1. 공격 히트박스와 뒤통수 허트박스는 즉시 회전하여 정확한 방향을 가리킵니다. 
-            AttackHitbox.localEulerAngles = new Vector3(0, 0, _targetAttackRot);
+            AttackRangebox.localEulerAngles = new Vector3(0, 0, _targetAttackRot);
             BackHurtBox.localEulerAngles = new Vector3(0, 0, _targetHurtRot);
 
             // 2. 시야 박스만 보간을 사용하여 부드럽게 회전합니다. 
             float currentSight = SightBox.localEulerAngles.z;
             float nextSight = Mathf.LerpAngle(currentSight, _targetSightRot, Time.deltaTime * RotationSpeed);
-            
+
             SightBox.localEulerAngles = new Vector3(0, 0, nextSight);
         }
-       
+
         public void OnBackHit(Collider2D collision)
         {
             // 플레이어의 공격 히트박스 태그가 "PlayerAttack"
@@ -197,6 +200,3 @@ namespace WatchYourBack
     }
 
 }
-
-
-
