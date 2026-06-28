@@ -19,6 +19,11 @@ namespace WatchYourBack
         {
             while (true)
             {
+                if (manager == null)
+                {
+                    yield break;
+                }
+
                 bool canSeePlayer = manager.CheckPlayerInSight();
 
                 if (canSeePlayer == true)
@@ -62,10 +67,7 @@ namespace WatchYourBack
 
                 yield return null;
 
-                if (manager == null)
-                {
-                    yield break;
-                }
+                
             }
         }
 

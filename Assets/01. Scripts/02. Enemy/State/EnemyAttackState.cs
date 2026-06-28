@@ -10,8 +10,7 @@ namespace WatchYourBack
         public void Enter(EnemyStateManager manager)
         {
             // 공격 시작 시 이동 정지 및 애니메이션 파라미터 설정 [1]            
-            manager.Stop();
-            manager.UpdateBoxRotations();
+            manager.Stop();            
             manager.Anim.SetBool("IsAttack", true);
             
         }
@@ -20,6 +19,11 @@ namespace WatchYourBack
         {
             while (true)
             {
+                if (manager == null)
+                {
+                    yield break;
+                }
+
                 // 1. 공격 실행 (애니메이션 트리거 등)
                 // 히트박스 회전은 이미 manager.Move() 시점의 마지막 방향으로 고정됨 [1]
                 Debug.Log("적 일반 공격 실행");
@@ -44,10 +48,7 @@ namespace WatchYourBack
                     yield break;
                 }
 
-                if (manager == null)
-                {
-                    yield break;
-                }
+                yield return null;
             }
         }
 
