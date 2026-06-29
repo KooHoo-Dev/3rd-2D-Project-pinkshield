@@ -8,9 +8,10 @@ namespace WatchYourBack
         private float _attackCooldown = 0.8f;
 
         public void Enter(EnemyStateManager manager)
-        {
-            // 공격 시작 시 이동 정지 및 애니메이션 파라미터 설정 [1]            
-            manager.Stop();            
+        {   
+            // 공격 시작 시 이동 정지 및 애니메이션 파라미터 설정        
+            manager.Stop();
+            manager.UpdateBoxRotations();
             manager.Anim.SetBool("IsAttack", true);
             
         }
@@ -25,8 +26,9 @@ namespace WatchYourBack
                 }
 
                 // 1. 공격 실행 (애니메이션 트리거 등)
-                // 히트박스 회전은 이미 manager.Move() 시점의 마지막 방향으로 고정됨 [1]
+                // 히트박스 회전은 이미 manager.Move() 시점의 마지막 방향으로 고정됨 
                 Debug.Log("적 일반 공격 실행");
+                
 
                 // 2. 공격 쿨타임 대기 (0.8초) [1]
                 yield return new WaitForSeconds(_attackCooldown);

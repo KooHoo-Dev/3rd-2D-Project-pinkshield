@@ -23,6 +23,9 @@ namespace WatchYourBack
         [SerializeField] private Collider2D AttackHitBox;
         [SerializeField] private GameObject gameOverUI;
 
+        [Header("Debug")]
+        [SerializeField] private EnemyStateManager debugTargetEnemy;
+
         private bool isKnockDown = false;
         
 
@@ -30,7 +33,7 @@ namespace WatchYourBack
         private Vector2 movement;
         private Rigidbody2D rb;
         private Animator animator;
-        
+        private EnemyStateManager Enemy;
 
 
         private void Awake()
@@ -39,7 +42,8 @@ namespace WatchYourBack
             animator = GetComponentInChildren<Animator>();
             //enemyStateManager = GetComponent<EnemyStateManager>();
             // 같은 게임오브젝트에 있는 컴포넌트가 아니라서 null임
-            
+            Enemy = GetComponent<EnemyStateManager>();
+
             if(animator == null)
             {
                 Debug.LogError("Animator를 찾을 수 없다!");
@@ -53,6 +57,11 @@ namespace WatchYourBack
             if (SimpleInput.GetKeyDown(Key.F1))
             {
                 Restart();
+            }
+
+            if (SimpleInput.GetKeyDown(Key.F2))
+            {
+                KillEnemy();
             }
 
             Attack();
@@ -122,6 +131,17 @@ namespace WatchYourBack
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
             SceneManager.LoadScene(currentSceneIndex);                       
+        }
+
+        public void KillEnemy()
+        {
+            if (debugTargetEnemy == null)
+            {
+                Debug.LogError("KillEnemy : debugTargetEnemy가 연결되지 않았습니다.");
+                return;
+            }
+
+            debugTargetEnemy.ChangeState(new EnemyKnockDownState());
         }
 
 

@@ -14,6 +14,7 @@ namespace WatchYourBack
         public Rigidbody2D Rb;
         public Animator Anim;
         public Transform Player;
+        public GameObject KnockdownCutscnene;
 
         [Header("Box Transforms")]
         public Transform SightBox;      // 회전 제어용
@@ -22,7 +23,7 @@ namespace WatchYourBack
 
         [Header("Box Colliders")]
         public Collider2D SightBoxCollider;     // 플레이어 감지용
-        public Collider2D AttackHitboxCollider;  // 공격 사거리 판정용
+        public Collider2D AttackRangeboxCollider;  // 공격 사거리 판정용
         public Collider2D BackHurtBoxCollider;   // 뒤통수 피격 판정용
 
         [Header("Chase Settings")]
@@ -85,9 +86,9 @@ namespace WatchYourBack
             UpdateBoxRotations();
         }
 
-        public void SetAttackAnimation(bool isAttack)
+        public void SetAttackAnimation(bool isAttaking)
         {
-            Anim.SetBool("IsAttacking", isAttack);
+            Anim.SetBool("IsAttack", isAttaking);
         }
 
 
@@ -123,7 +124,7 @@ namespace WatchYourBack
         }
 
         // 플레이어가 공격 범위(AttackHitbox) 안에 있는지 체크
-        public bool CheckPlayerInAttackRange()
+         public bool CheckPlayerInAttackRange()
         {
             if (Player == null) return false;
 
@@ -131,11 +132,12 @@ namespace WatchYourBack
             Collider2D playerCollider = Player.GetComponent<Collider2D>();
             if (playerCollider == null) return false;
 
-            bool isTouching = AttackHitboxCollider.IsTouching(playerCollider);
+            bool isTouching = AttackRangeboxCollider.IsTouching(playerCollider);
 
             if (isTouching == true) return true;
             return false;
         }
+
 
         public void UpdateBoxRotations()
         {
