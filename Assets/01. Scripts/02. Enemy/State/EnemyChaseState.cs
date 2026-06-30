@@ -68,16 +68,7 @@ namespace WatchYourBack
             }
         }
 
-        private IEnumerator PerformAttack(EnemyStateManager manager)
-        {
-            manager.Stop();
-            manager.SetAttackAnimation(true);
-
-            // 0.8초간 공격 애니메이션 및 쿨타임 대기
-            yield return new WaitForSeconds(0.8f);
-
-            manager.SetAttackAnimation(false);
-        }
+        
 
         public void Exit(EnemyStateManager manager) => manager.Stop();
     }

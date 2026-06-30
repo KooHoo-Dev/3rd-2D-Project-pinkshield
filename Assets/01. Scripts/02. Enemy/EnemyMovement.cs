@@ -23,7 +23,7 @@ namespace WatchYourBack
         private Transform EnemySpawnPoint;
         private bool isChasing = false;
         private bool isPatroling = false;
-        private float idleDuration = 2.0f;
+        
 
         private void Start()
         {

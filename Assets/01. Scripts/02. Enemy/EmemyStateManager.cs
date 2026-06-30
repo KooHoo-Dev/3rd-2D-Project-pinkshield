@@ -16,10 +16,12 @@ namespace WatchYourBack
         public Transform Player;
         public GameObject KnockdownCutscnene;
 
-        [Header("Box Transforms")]
-        public Transform SightBox;      // 회전 제어용
-        public Transform AttackRangebox;   // 회전 제어용
-        public Transform BackHurtBox;    // 회전 제어용
+        [Header("Box Transforms")] // 회전 제어용
+        public Transform SightBox;      
+        public Transform AttackRangebox;   
+        public Transform AttackHitBox;
+        public Transform BackHurtBox;    
+        
 
         [Header("Box Colliders")]
         public Collider2D SightBoxCollider;     // 플레이어 감지용
@@ -42,9 +44,12 @@ namespace WatchYourBack
 
         private IEnemyState _currentState;
         private Coroutine _stateCoroutine;
-        private float _targetAttackRot;
+
+        // 각도들
+        private float _targetAttackRot; 
         private float _targetHurtRot;
         private float _targetSightRot;
+        
 
         private void Awake()
         {
@@ -169,9 +174,9 @@ namespace WatchYourBack
             ApplyRotations();
         }
 
-        private void SetTargetAngles(float attack, float hurt, float sight)
+        private void SetTargetAngles(float attackSight,float hurt, float sight)
         {
-            _targetAttackRot = attack;
+            _targetAttackRot = attackSight;
             _targetHurtRot = hurt;
             _targetSightRot = sight;
         }
@@ -181,6 +186,8 @@ namespace WatchYourBack
             // 1. 공격 히트박스와 뒤통수 허트박스는 즉시 회전하여 정확한 방향을 가리킵니다. 
             AttackRangebox.localEulerAngles = new Vector3(0, 0, _targetAttackRot);
             BackHurtBox.localEulerAngles = new Vector3(0, 0, _targetHurtRot);
+            AttackHitBox.localEulerAngles = new Vector3(0, 0, _targetAttackRot);
+
 
             // 2. 시야 박스만 보간을 사용하여 부드럽게 회전합니다. 
             float currentSight = SightBox.localEulerAngles.z;
