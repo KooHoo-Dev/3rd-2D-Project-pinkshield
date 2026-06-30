@@ -1,19 +1,28 @@
 fileFormatVersion: 2
-guid: 0227d87ea6257364cab2a34304a083a7
+guid: aa9578f6adbb4d545963940183271e2a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8241145007560396976
-    second: Watchman Back  _0
+      213: 5295717168085638481
+    second: Watch man left attack _0
   - first:
-      213: -1312179051600609316
-    second: Watchman Back  _1
+      213: 4361187795071875695
+    second: Watch man left attack _1
   - first:
-      213: 4730110394735051197
-    second: Watchman Back  _2
+      213: -1274991189642361262
+    second: Watch man left attack _2
   - first:
-      213: 3423388863734117261
-    second: Watchman Back  _3
+      213: -3606736976967779490
+    second: Watch man left attack _3
+  - first:
+      213: 4260316248526943772
+    second: Watch man left attack _4
+  - first:
+      213: -3260919126810702684
+    second: Watch man left attack _5
+  - first:
+      213: -6721723107495541904
+    second: Watch man left attack _6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +55,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -60,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -83,8 +92,8 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
+    textureFormat: 4
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,89 +131,155 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Watchman Back  _0
+      name: Watch man left attack _0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 147
-        width: 66
+        x: 15
+        y: 283
+        width: 74
         height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b01f1e88bd6e5270800000000000000
-      internalID: 8241145007560396976
+      spriteID: 15d9eaad4ba2e7940800000000000000
+      internalID: 5295717168085638481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Watchman Back  _1
+      name: Watch man left attack _1
       rect:
         serializedVersion: 2
-        x: 159
-        y: 147
-        width: 66
+        x: 143
+        y: 283
+        width: 78
         height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cdff2a3da143acde0800000000000000
-      internalID: -1312179051600609316
+      spriteID: f6a370c613d068c30800000000000000
+      internalID: 4361187795071875695
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Watchman Back  _2
+      name: Watch man left attack _2
       rect:
         serializedVersion: 2
-        x: 31
-        y: 19
-        width: 66
+        x: 271
+        y: 283
+        width: 74
         height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: db1c092c75ab4a140800000000000000
-      internalID: 4730110394735051197
+      spriteID: 2564d99a4425e4ee0800000000000000
+      internalID: -1274991189642361262
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Watchman Back  _3
+      name: Watch man left attack _3
       rect:
         serializedVersion: 2
-        x: 159
-        y: 19
-        width: 66
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 11
+        y: 139
+        width: 78
+        height: 90
+      alignment: 9
+      pivot: {x: 0.7, y: 0.6}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d8376ee9802528f20800000000000000
-      internalID: 3423388863734117261
+      spriteID: e5bb19924db42fdc0800000000000000
+      internalID: -3606736976967779490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Watch man left attack _4
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 155
+        width: 70
+        height: 74
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c16f5405e0faf1b30800000000000000
+      internalID: 4260316248526943772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Watch man left attack _5
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 155
+        width: 74
+        height: 74
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4accb2dc453eeb2d0800000000000000
+      internalID: -3260919126810702684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Watch man left attack _6
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 27
+        width: 74
+        height: 74
+      alignment: 9
+      pivot: {x: 0.65, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 073813b6274a7b2a0800000000000000
+      internalID: -6721723107495541904
       vertices: []
       indices: 
       edges: []
@@ -213,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2aa5b1de33c91bb44af73736baa5cca2
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +298,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Watchman Back  _0: 8241145007560396976
-      Watchman Back  _1: -1312179051600609316
-      Watchman Back  _2: 4730110394735051197
-      Watchman Back  _3: 3423388863734117261
+      Watch man left attack _0: 5295717168085638481
+      Watch man left attack _1: 4361187795071875695
+      Watch man left attack _2: -1274991189642361262
+      Watch man left attack _3: -3606736976967779490
+      Watch man left attack _4: 4260316248526943772
+      Watch man left attack _5: -3260919126810702684
+      Watch man left attack _6: -6721723107495541904
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

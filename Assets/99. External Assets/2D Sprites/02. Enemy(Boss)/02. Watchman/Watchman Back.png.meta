@@ -1,19 +1,19 @@
 fileFormatVersion: 2
-guid: 0895d6fa71dcf46dbb8085b29cc57f07
+guid: 0227d87ea6257364cab2a34304a083a7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1885619355678641371
-    second: Darkerman_move_uppng_0
+      213: 8241145007560396976
+    second: Watchman Back  _0
   - first:
-      213: 672224291039176386
-    second: Darkerman_move_uppng_1
+      213: -1312179051600609316
+    second: Watchman Back  _1
   - first:
-      213: -1611811174948546640
-    second: Darkerman_move_uppng_2
+      213: 4730110394735051197
+    second: Watchman Back  _2
   - first:
-      213: -7647944382344151681
-    second: Darkerman_move_uppng_3
+      213: 3423388863734117261
+    second: Watchman Back  _3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -83,8 +83,8 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,106 +118,93 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Darkerman_move_uppng_0
+      name: Watchman Back  _0
       rect:
         serializedVersion: 2
-        x: 32
-        y: 148
-        width: 64
-        height: 72
+        x: 31
+        y: 147
+        width: 66
+        height: 74
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bdc83d440d01b2a10800000000000000
-      internalID: 1885619355678641371
+      spriteID: 0b01f1e88bd6e5270800000000000000
+      internalID: 8241145007560396976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkerman_move_uppng_1
+      name: Watchman Back  _1
       rect:
         serializedVersion: 2
-        x: 160
-        y: 148
-        width: 64
-        height: 72
+        x: 159
+        y: 147
+        width: 66
+        height: 74
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c667cc5e68345900800000000000000
-      internalID: 672224291039176386
+      spriteID: cdff2a3da143acde0800000000000000
+      internalID: -1312179051600609316
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkerman_move_uppng_2
+      name: Watchman Back  _2
       rect:
         serializedVersion: 2
-        x: 32
-        y: 20
-        width: 64
-        height: 72
+        x: 31
+        y: 19
+        width: 66
+        height: 74
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0b7df20b642b1a9e0800000000000000
-      internalID: -1611811174948546640
+      spriteID: db1c092c75ab4a140800000000000000
+      internalID: 4730110394735051197
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Darkerman_move_uppng_3
+      name: Watchman Back  _3
       rect:
         serializedVersion: 2
-        x: 156
-        y: 20
-        width: 64
-        height: 72
+        x: 159
+        y: 19
+        width: 66
+        height: 74
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7dbe64da1b0dd590800000000000000
-      internalID: -7647944382344151681
+      spriteID: d8376ee9802528f20800000000000000
+      internalID: 3423388863734117261
       vertices: []
       indices: 
       edges: []
@@ -226,7 +213,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 449c059ec3cbe49be9e1b6e151b22da4
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -234,14 +221,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      Darkerman_move_uppng_0: 1885619355678641371
-      Darkerman_move_uppng_1: 672224291039176386
-      Darkerman_move_uppng_2: -1611811174948546640
-      Darkerman_move_uppng_3: -7647944382344151681
+      Watchman Back  _0: 8241145007560396976
+      Watchman Back  _1: -1312179051600609316
+      Watchman Back  _2: 4730110394735051197
+      Watchman Back  _3: 3423388863734117261
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

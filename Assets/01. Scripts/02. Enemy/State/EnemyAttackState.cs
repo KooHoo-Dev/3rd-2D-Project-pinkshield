@@ -5,7 +5,7 @@ namespace WatchYourBack
 {
     public class EnemyAttackState : IEnemyState
     {
-        private float _attackCooldown = 0.8f;
+        private float _attackCooldown = 0.6f;
 
         public void Enter(EnemyStateManager manager)
         {   

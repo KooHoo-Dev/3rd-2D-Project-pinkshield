@@ -1,28 +1,19 @@
 fileFormatVersion: 2
-guid: aa9578f6adbb4d545963940183271e2a
+guid: 0895d6fa71dcf46dbb8085b29cc57f07
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5295717168085638481
-    second: Watch man left attack _0
+      213: 1885619355678641371
+    second: Darkerman_move_uppng_0
   - first:
-      213: 4361187795071875695
-    second: Watch man left attack _1
+      213: 672224291039176386
+    second: Darkerman_move_uppng_1
   - first:
-      213: -1274991189642361262
-    second: Watch man left attack _2
+      213: -1611811174948546640
+    second: Darkerman_move_uppng_2
   - first:
-      213: -3606736976967779490
-    second: Watch man left attack _3
-  - first:
-      213: 4260316248526943772
-    second: Watch man left attack _4
-  - first:
-      213: -3260919126810702684
-    second: Watch man left attack _5
-  - first:
-      213: -6721723107495541904
-    second: Watch man left attack _6
+      213: -7647944382344151681
+    second: Darkerman_move_uppng_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -127,159 +118,106 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Watch man left attack _0
+      name: Darkerman_move_uppng_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 283
-        width: 74
-        height: 74
+        x: 32
+        y: 148
+        width: 64
+        height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 15d9eaad4ba2e7940800000000000000
-      internalID: 5295717168085638481
+      spriteID: bdc83d440d01b2a10800000000000000
+      internalID: 1885619355678641371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Watch man left attack _1
+      name: Darkerman_move_uppng_1
       rect:
         serializedVersion: 2
-        x: 143
-        y: 283
-        width: 78
-        height: 74
+        x: 160
+        y: 148
+        width: 64
+        height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f6a370c613d068c30800000000000000
-      internalID: 4361187795071875695
+      spriteID: 2c667cc5e68345900800000000000000
+      internalID: 672224291039176386
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Watch man left attack _2
+      name: Darkerman_move_uppng_2
       rect:
         serializedVersion: 2
-        x: 271
-        y: 283
-        width: 74
-        height: 74
+        x: 32
+        y: 20
+        width: 64
+        height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2564d99a4425e4ee0800000000000000
-      internalID: -1274991189642361262
+      spriteID: 0b7df20b642b1a9e0800000000000000
+      internalID: -1611811174948546640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Watch man left attack _3
+      name: Darkerman_move_uppng_3
       rect:
         serializedVersion: 2
-        x: 11
-        y: 139
-        width: 78
-        height: 90
+        x: 156
+        y: 20
+        width: 64
+        height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e5bb19924db42fdc0800000000000000
-      internalID: -3606736976967779490
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Watch man left attack _4
-      rect:
-        serializedVersion: 2
-        x: 147
-        y: 155
-        width: 70
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c16f5405e0faf1b30800000000000000
-      internalID: 4260316248526943772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Watch man left attack _5
-      rect:
-        serializedVersion: 2
-        x: 271
-        y: 155
-        width: 74
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4accb2dc453eeb2d0800000000000000
-      internalID: -3260919126810702684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Watch man left attack _6
-      rect:
-        serializedVersion: 2
-        x: 15
-        y: 27
-        width: 74
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 073813b6274a7b2a0800000000000000
-      internalID: -6721723107495541904
+      spriteID: f7dbe64da1b0dd590800000000000000
+      internalID: -7647944382344151681
       vertices: []
       indices: 
       edges: []
@@ -288,7 +226,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 449c059ec3cbe49be9e1b6e151b22da4
     internalID: 0
     vertices: []
     indices: 
@@ -296,15 +234,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Watch man left attack _0: 5295717168085638481
-      Watch man left attack _1: 4361187795071875695
-      Watch man left attack _2: -1274991189642361262
-      Watch man left attack _3: -3606736976967779490
-      Watch man left attack _4: 4260316248526943772
-      Watch man left attack _5: -3260919126810702684
-      Watch man left attack _6: -6721723107495541904
+      Darkerman_move_uppng_0: 1885619355678641371
+      Darkerman_move_uppng_1: 672224291039176386
+      Darkerman_move_uppng_2: -1611811174948546640
+      Darkerman_move_uppng_3: -7647944382344151681
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
