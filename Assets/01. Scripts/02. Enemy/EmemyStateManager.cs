@@ -35,6 +35,14 @@ namespace WatchYourBack
         [Header("Rotation Settings")]
         public float RotationSpeed = 10f; // 회전의 부드러운 정도
 
+        [Header("Advanced Avoidance")] // 장애물 회피 전용 
+        public float DetectionDistance = 1.5f; // 발견 거리
+        public float AvoidanceAngle = 30f; // 레이빔 사이의 각도
+        public int RayCount = 5; // 쏠 레이빔의 개수 (홀수 권장)
+
+        [Header("BoxCast Settings")]
+        public Vector2 BoxSize = new Vector2(1.0f, 1.0f); // 캐릭터 실제 크기보다 약간 작게 설정
+        public float SkinWidth = 0.1f; // 끼임 방지 여유 공간
 
 
 
@@ -84,6 +92,38 @@ namespace WatchYourBack
             UpdateBoxRotations();
         }
 
+        public void MoveWithAvoidance(Vector2 targetDirection)
+        {
+            Vector2 finalDirection = targetDirection;
+            
+
+            // 1. 여러 갈래로 레이를 쏴서 비어있는 가장 가까운 경로 탐색 
+            for (int i = 0; i < RayCount; i++)
+            {
+                // 0, 30, -30... 순서로 각도 계산
+                float angle = AvoidanceAngle * (i % 2 == 0 ? i / 2 : -(i / 4 + 1));
+                Vector2 checkDir = Quaternion.Euler(0, 0, angle) * targetDirection;
+
+                // 선(Ray)이 아닌 사각형(Box)을 쏴서 충돌 감지 
+                RaycastHit2D hit = Physics2D.BoxCast(Rb.position, BoxSize, 0f, checkDir, DetectionDistance, ObstacleLayer);
+
+                if (hit.collider == null)
+                {
+                    finalDirection = checkDir;
+                    break;
+                }
+            }
+
+            // 2. 이동 및 애니메이션 적용 
+            MoveDirection = finalDirection;
+            Rb.linearVelocity = finalDirection * Speed;
+            Anim.SetBool("IsMoving", true);
+            Anim.SetFloat("MoveX", finalDirection.x);
+            Anim.SetFloat("MoveY", finalDirection.y);
+            UpdateBoxRotations();
+        }
+
+
         public void Stop()
         {
             Rb.linearVelocity = Vector2.zero;
@@ -124,7 +164,7 @@ namespace WatchYourBack
             float distance = Vector2.Distance(transform.position, Player.position);
             RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, distance, ObstacleLayer);
 
-            if (hit.collider == null) return true; // 장애물에 가려지지 않음 [2]
+            if (hit.collider == null) return true; // 장애물에 가려지지 않음 
             return false;
         }
 

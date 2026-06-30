@@ -30,7 +30,7 @@ namespace WatchYourBack
                 }
 
                 Vector2 direction = (targetPos - (Vector2)manager.transform.position).normalized;
-                manager.Move(direction);
+                manager.MoveWithAvoidance(direction);
                 
 
                 yield return null;
