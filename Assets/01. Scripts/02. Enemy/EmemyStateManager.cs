@@ -55,12 +55,12 @@ namespace WatchYourBack
         {
             Rb = GetComponent<Rigidbody2D>();
             Anim = GetComponentInChildren<Animator>();
-            SpawnPosition = transform.position; // 시작 위치 기억 [5]
+            SpawnPosition = transform.position; // 시작 위치 기억 
         }
 
         private void Start()
         {
-            ChangeState(new EnemyIdleState()); // 초기 상태 설정 [6]
+            ChangeState(new EnemyIdleState()); // 초기 상태 설정 
         }
 
         public void ChangeState(IEnemyState newState)
@@ -70,11 +70,11 @@ namespace WatchYourBack
             if (_stateCoroutine != null) StopCoroutine(_stateCoroutine); // 기존 루프 중단 [8]
 
             _currentState = newState;
-            _currentState.Enter(this); // 새로운 상태 진입 [7]
+            _currentState.Enter(this); // 새로운 상태 진입 
             _stateCoroutine = StartCoroutine(_currentState.Execute(this)); // 상태 루프 시작 [9]
         }
 
-        // 상태들이 공통으로 사용할 이동 함수 (기능 병합) [10]
+        // 상태들이 공통으로 사용할 이동 함수 (기능 병합)
         public void Move(Vector2 direction)
         {
             Rb.linearVelocity = direction * Speed;

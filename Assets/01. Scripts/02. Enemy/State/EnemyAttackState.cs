@@ -30,21 +30,21 @@ namespace WatchYourBack
                 Debug.Log("적 일반 공격 실행");
                 
 
-                // 2. 공격 쿨타임 대기 (0.8초) [1]
+                // 2. 공격 쿨타임 대기 (0.8초) 
                 yield return new WaitForSeconds(_attackCooldown);
 
                 // 3. 상태 전환 판정
-                // 플레이어가 공격 사거리(AttackHitbox)를 벗어났는지 확인 [1]
+                // 플레이어가 공격 사거리(AttackHitbox)를 벗어났는지 확인 
                 if (manager.CheckPlayerInAttackRange() == false)
                 {
                     if (manager.CheckPlayerInSight() == true)
                     {
-                        // 시야에는 있다면 다시 추격 [1]
+                        // 시야에는 있다면 다시 추격 
                         manager.ChangeState(new EnemyChaseState());
                     }
                     else
                     {
-                        // 완전히 놓쳤다면 대기 상태로 [1]
+                        // 완전히 놓쳤다면 대기 상태로 
                         manager.ChangeState(new EnemyIdleState());
                     }
                     yield break;

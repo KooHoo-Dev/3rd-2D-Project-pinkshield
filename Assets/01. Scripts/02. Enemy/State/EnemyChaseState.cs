@@ -10,6 +10,8 @@ namespace WatchYourBack
 
         public void Enter(EnemyStateManager manager)
         {
+
+            Debug.Log("추적 상태 시작");
             _lostTimer = 0f;
         }
 

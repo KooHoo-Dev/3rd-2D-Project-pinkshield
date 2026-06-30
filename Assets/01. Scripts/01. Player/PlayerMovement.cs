@@ -22,6 +22,8 @@ namespace WatchYourBack
         [SerializeField] private float moveSpeed = 4f;
         [SerializeField] private Collider2D AttackHitBox;
         [SerializeField] private GameObject gameOverUI;
+        [SerializeField] private GameObject hitCutScene;
+
 
         [Header("Debug")]
         [SerializeField] private EnemyStateManager debugTargetEnemy;
@@ -108,6 +110,7 @@ namespace WatchYourBack
 
             isKnockDown = true;
             rb.linearVelocity = Vector2.zero; // 즉시 정지
+            
             animator.SetTrigger("OnKnockDown"); // 애니메이션 재생
 
             StartCoroutine(KnockDownRoutine());
@@ -115,8 +118,14 @@ namespace WatchYourBack
 
         private IEnumerator KnockDownRoutine()
         {
+            if (hitCutScene != null)
+            {
+                hitCutScene.SetActive(true);
+            }
             // 1. 컷신 및 애니메이션 대기 (예: 2초)
             yield return new WaitForSeconds(2f);
+
+            hitCutScene.SetActive(false);
 
             // 2. 게임오버 UI 활성화
             if (gameOverUI != null)
