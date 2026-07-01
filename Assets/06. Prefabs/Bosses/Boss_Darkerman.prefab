@@ -871,7 +871,7 @@ MonoBehaviour:
   Rb: {fileID: 865286451504154722}
   Anim: {fileID: 8844175029835000494}
   Player: {fileID: 0}
-  KnockdownCutscnene: {fileID: 0}
+  KnockdownCutscnene: {fileID: 1966263122513474428, guid: f33419d71df30144a960d6814056d9c8, type: 3}
   SightBox: {fileID: 7641097771577491075}
   AttackRangebox: {fileID: 4800486928954533642}
   AttackHitBox: {fileID: 4377199681670119759}

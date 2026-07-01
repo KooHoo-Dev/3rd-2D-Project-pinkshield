@@ -22,7 +22,7 @@ namespace WatchYourBack
         [SerializeField] private float movementRange = 3f; // 좌우 이동 반경
 
         [Header("Boss_RatMan")]
-        [SerializeField] public EnemyStateManager Ratman;
+        public EnemyStateManager Ratman;
        
 
         private Animator ratAnim;
@@ -92,7 +92,26 @@ namespace WatchYourBack
 
             yield return new WaitForSeconds(1.0f);
 
-            gameObject.SetActive(false);             
+            if (Ratman != null)
+            {
+                            
+                Ratman.LastPlayerPosition = transform.position;
+                Ratman.ChangeState(new RatmanPatternState());
+            }
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (sr != null)
+            {
+                sr.enabled = false;
+            }
+
+            // 콜라이더도 꺼서 플레이어와 다시 충돌하지 않게 한다
+            Collider2D col = GetComponent<Collider2D>();
+            if (col != null)
+            {
+                col.enabled = false;
+            }
+
+
         }
 
 

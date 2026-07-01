@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 
@@ -190,10 +191,22 @@ namespace WatchYourBack
             UpdateBoxRotations();
         }
 
+        public IEnumerator LookAroundRoutine()
+        {
+            Vector2[] directions = { Vector2.down, Vector2.right, Vector2.up, Vector2.left };
+            float lookInterval = 0.6f; // 방향당 바라보는 시간
+
+            foreach (Vector2 dir in directions)
+            {
+                SetLookAround(dir);
+                UpdateBoxRotations();
+                yield return new WaitForSeconds(lookInterval);
+            }
+        }
 
 
         // 플레이어가 공격 범위(AttackHitbox) 안에 있는지 체크
-         public bool CheckPlayerInAttackRange()
+        public bool CheckPlayerInAttackRange()
         {
             if (Player == null) return false;
 

@@ -8,14 +8,17 @@ namespace WatchYourBack
     {
 
         private readonly float arrivalConfirmDis = 0.2f; // 도착 인정거리
+        private const float LookInterval = 0.6f; // 방향당 바라보는 시간
+
+
+        public void Enter(EnemyStateManager manager)
+        {
+            Debug.Log("[RatmanPattern] 쥐 죽음! 그 위치로 이동 시작");
+            manager.Stop();
+        } 
 
 
 
-        public void Enter(EnemyStateManager Manager)
-        {   
-            // 상태 진입 시 기존 물리 속도 초기화
-            Manager.Rb.linearVelocity = Vector2.zero;
-        }
 
         public IEnumerator Execute(EnemyStateManager manager)
         {
@@ -25,6 +28,13 @@ namespace WatchYourBack
             {
                 if (manager == null)
                 {
+                    yield break;
+                }
+
+                // 이동 중 플레이어 발견 시 즉시 Chase
+                if (manager.CheckPlayerInSight() == true)
+                {
+                    manager.ChangeState(new EnemyChaseState());
                     yield break;
                 }
 
@@ -40,23 +50,59 @@ namespace WatchYourBack
 
                 Vector2 dir = (targetPos - (Vector2)manager.transform.position).normalized;
                 manager.MoveWithAvoidance(dir);
-
+                               
                 yield return null;
 
             }
 
-            // 루프 탈출 후 행동
+            // 2단계 : 도착 후 4방향 탐색
+            // 탐색 중에도 플레이어를 발견하면 즉시 Chase로 전환
             manager.Stop();
 
+            Vector2[] directions = { Vector2.down, Vector2.right, Vector2.up, Vector2.left };
 
+            foreach (Vector2 lookDir in directions)
+            {
+                manager.SetLookAround(lookDir);
+
+                float timer = 0f;
+                while (timer < LookInterval)
+                {
+                    if (manager == null)
+                    {
+                        yield break;
+                    }
+
+                    // 각 방향을 바라보는 도중에도 매 프레임 시야 체크
+                    if (manager.CheckPlayerInSight() == true)
+                    {
+                        Debug.Log("[RatmanPattern] 탐색 중 플레이어 발견 → Chase");
+                        manager.ChangeState(new EnemyChaseState());
+                        yield break;
+                    }
+
+                    timer += Time.deltaTime;
+                    yield return null;
+                }
+            }
+
+            // 3단계 : 탐색 완료 후 순찰 복귀
+            Debug.Log("[RatmanPattern] 탐색 완료 → Patrol 복귀");
+            manager.ChangeState(new EnemyPatrolState());
         }
 
-        public void Exit(EnemyStateManager Manager)
-        {
-            throw new System.NotImplementedException();
+        public void Exit(EnemyStateManager manager) 
+        { 
+        
         }
 
         
+
+       
+
+
+
+
     }
 
 }
