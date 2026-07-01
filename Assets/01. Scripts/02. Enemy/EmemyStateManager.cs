@@ -49,6 +49,7 @@ namespace WatchYourBack
         public LayerMask ObstacleLayer;
         public bool IsGoingToPatrolPoint = true;
         public Vector2 MoveDirection { get; set; }
+        public Vector2 LastPlayerPosition { get; set; }
 
         private IEnemyState _currentState;
         private Coroutine _stateCoroutine;
@@ -83,14 +84,14 @@ namespace WatchYourBack
         }
 
         // 상태들이 공통으로 사용할 이동 함수 (기능 병합)
-        public void Move(Vector2 direction)
-        {
-            Rb.linearVelocity = direction * Speed;
-            Anim.SetBool("IsMoving", true);
-            Anim.SetFloat("MoveX", direction.x);
-            Anim.SetFloat("MoveY", direction.y);
-            UpdateBoxRotations();
-        }
+        //public void Move(Vector2 direction)
+        //{
+        //    Rb.linearVelocity = direction * Speed;
+        //    Anim.SetBool("IsMoving", true);
+        //    Anim.SetFloat("MoveX", direction.x);
+        //    Anim.SetFloat("MoveY", direction.y);
+        //    UpdateBoxRotations();
+        //}
 
         public void MoveWithAvoidance(Vector2 targetDirection)
         {
@@ -167,6 +168,29 @@ namespace WatchYourBack
             if (hit.collider == null) return true; // 장애물에 가려지지 않음 
             return false;
         }
+
+
+        // 멈춘 상태에서 주변 돌아보기 (추격 혹은 조사 시)
+
+        public void SetLookAround(Vector2 direction)
+        {
+            Anim.SetFloat("MoveX", direction.x);
+            Anim.SetFloat("MoveY", direction.y);
+            UpdateBoxRotations();
+        }
+
+
+        // 랜덤 방향으로 주변 돌아보기
+        public void SetRandomLookAround()
+        {
+            Vector2[] directions = { Vector2.left, Vector2.right, Vector2.up, Vector2.down };
+            Vector2 randomDir = directions[Random.Range(0, directions.Length)];
+
+            SetLookAround(randomDir);
+            UpdateBoxRotations();
+        }
+
+
 
         // 플레이어가 공격 범위(AttackHitbox) 안에 있는지 체크
          public bool CheckPlayerInAttackRange()

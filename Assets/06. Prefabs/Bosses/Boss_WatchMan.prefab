@@ -509,6 +509,11 @@ MonoBehaviour:
   StopDistance: 0.5
   FlipThreshold: 0.1
   RotationSpeed: 10
+  DetectionDistance: 4
+  AvoidanceAngle: 30
+  RayCount: 5
+  BoxSize: {x: 1, y: 1}
+  SkinWidth: 0.1
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -599,12 +604,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 5570147569049567956, guid: 29788b27a99e7ab43b75fc27704e5bf3, type: 3}
+  m_Sprite: {fileID: 1462736262546678724, guid: b11ad02c4af46c340835adf850b142d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.2083334, y: 1.4583334}
+  m_Size: {x: 1.625, y: 1.5416666}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -619,7 +624,7 @@ Animator:
   m_GameObject: {fileID: 6674210078282957774}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: d2a8b3d3560cb7d47ba89d84d2637bbf, type: 2}
+  m_Controller: {fileID: 22100000, guid: 6324c90e200c49545b394938fd0661e6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

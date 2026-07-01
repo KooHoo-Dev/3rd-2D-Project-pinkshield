@@ -1619,6 +1619,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   movementRange: 3
+  Ratman: {fileID: 2831219683288785548}
 --- !u!1 &542831635
 GameObject:
   m_ObjectHideFlags: 0
@@ -57383,26 +57384,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 879211304}
     m_Modifications:
-    - target: {fileID: 1330538684588708776, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1330538684588708776, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1330538684588708776, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1330538684588708776, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1330538684588708776, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4747395579611406098, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.387379
@@ -57447,74 +57428,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Alleyman
       objectReference: {fileID: 0}
-    - target: {fileID: 5476163353266678828, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_Size.y
-      value: 1.0684547
-      objectReference: {fileID: 0}
-    - target: {fileID: 5476163353266678828, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.3122692
-      objectReference: {fileID: 0}
-    - target: {fileID: 6578958786807078504, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: RayCount
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6578958786807078504, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: AvoidanceAngle
-      value: 45
-      objectReference: {fileID: 0}
     - target: {fileID: 6578958786807078504, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
       propertyPath: PatrolPosition
       value: 
       objectReference: {fileID: 1162789735}
     - target: {fileID: 6578958786807078504, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: DetectionDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6578958786807078504, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
       propertyPath: KnockdownCutscnene
       value: 
       objectReference: {fileID: 397508548}
-    - target: {fileID: 6578958786807078504, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: ObstacleLayer.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 7419293433752615993, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 7419293433752615993, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 7419293433752615993, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7419293433752615993, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7419293433752615993, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8065557042526211363, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_Size.x
-      value: 1.0276642
-      objectReference: {fileID: 0}
-    - target: {fileID: 8065557042526211363, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_Size.y
-      value: 0.9908886
-      objectReference: {fileID: 0}
-    - target: {fileID: 8065557042526211363, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_Offset.x
-      value: 0.01971817
-      objectReference: {fileID: 0}
-    - target: {fileID: 8065557042526211363, guid: 357cdf7f5f8386341a987b4b2cc5e1c9, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.46926403
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57535,6 +57456,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5567274386523045871, guid: b83bb320d77ca334e9519a4532d03c79, type: 3}
   m_PrefabInstance: {fileID: 2899690389179397639}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2831219683288785548 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6031905124903796218, guid: b83bb320d77ca334e9519a4532d03c79, type: 3}
+  m_PrefabInstance: {fileID: 2899690389179397639}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476bc0777f7211d4da4ff602364577e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.EnemyStateManager
 --- !u!1001 &2899690389179397639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57588,10 +57520,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 711690063}
     - target: {fileID: 6031905124903796218, guid: b83bb320d77ca334e9519a4532d03c79, type: 3}
-      propertyPath: DetectionDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6031905124903796218, guid: b83bb320d77ca334e9519a4532d03c79, type: 3}
       propertyPath: KnockdownCutscnene
       value: 
       objectReference: {fileID: 397508548}
@@ -57622,17 +57550,9 @@ PrefabInstance:
       value: Boss_Darkerman
       objectReference: {fileID: 0}
     - target: {fileID: 7738368333600309225, guid: 2e3d8aa49424a2740a95d7b3eae9851e, type: 3}
-      propertyPath: Speed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738368333600309225, guid: 2e3d8aa49424a2740a95d7b3eae9851e, type: 3}
       propertyPath: PatrolPosition
       value: 
       objectReference: {fileID: 1295318928}
-    - target: {fileID: 7738368333600309225, guid: 2e3d8aa49424a2740a95d7b3eae9851e, type: 3}
-      propertyPath: DetectionDistance
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 7738368333600309225, guid: 2e3d8aa49424a2740a95d7b3eae9851e, type: 3}
       propertyPath: KnockdownCutscnene
       value: 
@@ -57677,26 +57597,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8698430527105281843, guid: 2e3d8aa49424a2740a95d7b3eae9851e, type: 3}
-      propertyPath: m_Size.x
-      value: 1.1666666
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698430527105281843, guid: 2e3d8aa49424a2740a95d7b3eae9851e, type: 3}
-      propertyPath: m_Size.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8698430527105281843, guid: 2e3d8aa49424a2740a95d7b3eae9851e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 6355155005448893756, guid: d5c7283a28aeb4d81ac5fc6e94e63283, type: 3}
-    - target: {fileID: 8698430527105281843, guid: 2e3d8aa49424a2740a95d7b3eae9851e, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8844175029835000494, guid: 2e3d8aa49424a2740a95d7b3eae9851e, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: f1e2261018abe5742b01278788e1d709, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57819,10 +57719,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 879211304}
     m_Modifications:
-    - target: {fileID: 381600251792432623, guid: cf0f0b640c46a7149a431ecb5eb3b120, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 22100000, guid: 6324c90e200c49545b394938fd0661e6, type: 2}
     - target: {fileID: 2831219683196898359, guid: cf0f0b640c46a7149a431ecb5eb3b120, type: 3}
       propertyPath: m_LocalPosition.x
       value: -67.09
@@ -57868,29 +57764,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 342060980}
     - target: {fileID: 3659019687517237655, guid: cf0f0b640c46a7149a431ecb5eb3b120, type: 3}
-      propertyPath: DetectionDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3659019687517237655, guid: cf0f0b640c46a7149a431ecb5eb3b120, type: 3}
       propertyPath: KnockdownCutscnene
       value: 
       objectReference: {fileID: 397508548}
-    - target: {fileID: 4372498994679608771, guid: cf0f0b640c46a7149a431ecb5eb3b120, type: 3}
-      propertyPath: m_Size.x
-      value: 1.625
-      objectReference: {fileID: 0}
-    - target: {fileID: 4372498994679608771, guid: cf0f0b640c46a7149a431ecb5eb3b120, type: 3}
-      propertyPath: m_Size.y
-      value: 1.5416666
-      objectReference: {fileID: 0}
-    - target: {fileID: 4372498994679608771, guid: cf0f0b640c46a7149a431ecb5eb3b120, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 1462736262546678724, guid: b11ad02c4af46c340835adf850b142d0, type: 3}
-    - target: {fileID: 4372498994679608771, guid: cf0f0b640c46a7149a431ecb5eb3b120, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5984558661016204161, guid: cf0f0b640c46a7149a431ecb5eb3b120, type: 3}
       propertyPath: m_Name
       value: Boss_Watchman

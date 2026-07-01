@@ -9,15 +9,26 @@ namespace WatchYourBack
 
         public IEnumerator Execute(EnemyStateManager manager)
         {
-            float timer = 0f;
-            while (timer < 2.0f)
+            float totalTimer = 0f;
+            float lookTimer = 0f;
+            float lookInterval = 1.0f; // 시선변경 값
+
+            while (totalTimer < 3.0f)
             {
                 if (manager == null)
                 {
                     yield break;
                 }
 
-                timer += Time.deltaTime;
+                totalTimer += Time.deltaTime;
+                lookInterval += Time.deltaTime;
+
+                if (lookTimer >= lookInterval)
+                {
+                    manager.SetRandomLookAround();
+                    lookTimer = 0f;
+                }
+
 
                 // 플레이어 발견 시 즉시 추격
                 if (manager.CheckPlayerInSight() == true)
