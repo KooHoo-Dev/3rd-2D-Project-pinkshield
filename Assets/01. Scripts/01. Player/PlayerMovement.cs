@@ -35,7 +35,7 @@ namespace WatchYourBack
         private Vector2 movement;
         private Rigidbody2D rb;
         private Animator animator;
-        private EnemyStateManager Enemy;
+        
 
 
         private void Awake()
@@ -43,8 +43,7 @@ namespace WatchYourBack
             rb = GetComponent<Rigidbody2D>();
             animator = GetComponentInChildren<Animator>();
             //enemyStateManager = GetComponent<EnemyStateManager>();
-            // 같은 게임오브젝트에 있는 컴포넌트가 아니라서 null임
-            Enemy = GetComponent<EnemyStateManager>();
+            
 
             if(animator == null)
             {

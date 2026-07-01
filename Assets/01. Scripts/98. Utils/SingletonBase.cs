@@ -79,12 +79,16 @@ namespace Study.Utilities
         /// <summary>
         /// 싱글톤 초기화 시점에서 호출됨 (오버라이드 가능)
         /// </summary>
-        protected virtual void OnInitialize() { }
+        protected virtual void OnInitialize() 
+        {
+        }
 
         /// <summary>
         /// 싱글톤 제거 시점에서 호출됨 (오버라이드 가능)
         /// </summary>
-        protected virtual void OnDispose() { }
+        protected virtual void OnDispose() 
+        { 
+        }
 
         /// <summary>
         /// 현재 인스턴스를 강제로 제거하고 다시 초기화 가능 상태로 되돌림. 다시 싱글톤 호출해야함 (어떤 문제있는지 잘 모름)
