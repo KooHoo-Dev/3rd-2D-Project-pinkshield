@@ -19,20 +19,18 @@ namespace WatchYourBack
 
         public IEnumerator Execute(EnemyStateManager manager)
         {
-            while (true)
-            {
-                if (manager == null) yield break;
+            if (manager == null) yield break;
 
-                // 1. 공격 실행
-                manager.Anim.SetBool("IsAttack", true);
-                Debug.Log("적 일반 공격 실행");
+            // 1. 공격 실행
+            manager.Anim.SetBool("IsAttack", true);
+            Debug.Log("적 일반 공격 실행");
 
-                // 2. 공격 후 쿨타임 대기
-                yield return new WaitForSeconds(attackCooldown);
-                manager.Anim.SetBool("IsAttack", false);
-                manager.ChangeState(new EnemyChaseState());
-                
-            }
+            // 2. 공격 후 쿨타임 대기
+            yield return new WaitForSeconds(attackCooldown);
+            manager.Anim.SetBool("IsAttack", false);
+
+            manager.ChangeState(new EnemyChaseState());
+            yield break;
         }
 
         public void Exit(EnemyStateManager manager)

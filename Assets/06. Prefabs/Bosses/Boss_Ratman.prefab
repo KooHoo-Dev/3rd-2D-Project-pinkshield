@@ -101,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8680420050086161010}
   - component: {fileID: 6959296006149328897}
+  - component: {fileID: 6181398732317086851}
   m_Layer: 0
   m_Name: AttackRangeBox
   m_TagString: Untagged
@@ -170,6 +171,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1.0367737}
   m_EdgeRadius: 0
+--- !u!114 &6181398732317086851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770285089137859631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28675b4319d2ee5489eff7f64db7a1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.EnemyBoxTrigger
+  boxType: 1
+  manager: {fileID: 6031905124903796218}
 --- !u!1 &2858289629845713712
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 503889499848367044}
   - component: {fileID: 6028987838873323825}
+  - component: {fileID: 2304468583044360388}
   m_Layer: 0
   m_Name: SightBox
   m_TagString: Untagged
@@ -542,6 +558,20 @@ PolygonCollider2D:
       - {x: 6.249798, y: -0.6254597}
       - {x: 6.2964544, y: 0.33376688}
   m_UseDelaunayMesh: 1
+--- !u!114 &2304468583044360388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7418593280511255918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28675b4319d2ee5489eff7f64db7a1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.EnemyBoxTrigger
+  boxType: 0
+  manager: {fileID: 6031905124903796218}
 --- !u!1 &7498946135582409557
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,6 +583,7 @@ GameObject:
   - component: {fileID: 5956077175104342605}
   - component: {fileID: 3477742858237212354}
   - component: {fileID: 3908864854954462472}
+  - component: {fileID: 7555792474183871469}
   m_Layer: 0
   m_Name: BackHurtBox
   m_TagString: Untagged
@@ -634,6 +665,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b2aed301a91d4574bc874abb76a2238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.EnemyBackHurtBox
+--- !u!114 &7555792474183871469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498946135582409557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28675b4319d2ee5489eff7f64db7a1b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.EnemyBoxTrigger
+  boxType: 2
+  manager: {fileID: 6031905124903796218}
 --- !u!1 &7808922961766802619
 GameObject:
   m_ObjectHideFlags: 0

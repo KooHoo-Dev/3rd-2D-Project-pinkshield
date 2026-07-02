@@ -5,23 +5,32 @@ namespace WatchYourBack
 {
     public class EnemyPatrolState : IEnemyState
     {
+        private const float ArrivalThreshold = 0.1f;
+
         public void Enter(EnemyStateManager manager) 
         {
             
         }
 
         public IEnumerator Execute(EnemyStateManager manager)
-        {
+        {   
+
             Vector2 targetPos = manager.IsGoingToPatrolPoint == true
                 ? (Vector2)manager.PatrolPosition.position
                 : manager.SpawnPosition;
 
-            while (Vector2.Distance(manager.transform.position, targetPos) > 0.1f)
+            while (true)
             {
-                if (manager == null)
+                if (manager == null) yield break;
+
+                if (Vector2.Distance(manager.transform.position, targetPos) <= ArrivalThreshold)
                 {
+                    manager.IsGoingToPatrolPoint = (manager.IsGoingToPatrolPoint == false);
+                    manager.ChangeState(new EnemyIdleState());
                     yield break;
                 }
+
+
 
                 if (manager.CheckPlayerInSight() == true)
                 {
@@ -36,9 +45,7 @@ namespace WatchYourBack
                 yield return null;
             }
 
-            // 목적지 도착 시 다음 목적지 반전 및 대기 상태로
-            manager.IsGoingToPatrolPoint = (manager.IsGoingToPatrolPoint == false);
-            manager.ChangeState(new EnemyIdleState());
+            
         }
 
         public void Exit(EnemyStateManager manager) => manager.Stop();

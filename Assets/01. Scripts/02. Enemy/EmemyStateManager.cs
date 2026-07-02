@@ -6,6 +6,9 @@ namespace WatchYourBack
 {
     public class EnemyStateManager : MonoBehaviour
     {
+
+        private const float LookRoutineInterval = 0.6f;
+
         [Header("Settings")]
         public float Speed = 3.0f;
         public Transform PatrolPosition;
@@ -52,13 +55,15 @@ namespace WatchYourBack
         public Vector2 MoveDirection { get; set; }
         public Vector2 LastPlayerPosition { get; set; }
 
-        private IEnemyState _currentState;
-        private Coroutine _stateCoroutine;
+
+
+        private IEnemyState currentState;
+        private Coroutine stateCoroutine;
 
         // 각도들
-        private float _targetAttackRot; 
-        private float _targetHurtRot;
-        private float _targetSightRot;
+        private float targetAttackRot; 
+        private float targetHurtRot;
+        private float targetSightRot;
         
 
         private void Awake()
@@ -82,24 +87,17 @@ namespace WatchYourBack
 
         public void ChangeState(IEnemyState newState)
         {
-            if (_currentState != null) _currentState.Exit(this); // 상태 종료 처리 [7]
+            if (currentState != null) currentState.Exit(this); // 상태 종료 처리 [7]
 
-            if (_stateCoroutine != null) StopCoroutine(_stateCoroutine); // 기존 루프 중단 [8]
+            if (stateCoroutine != null) StopCoroutine(stateCoroutine); // 기존 루프 중단 [8]
 
-            _currentState = newState;
-            _currentState.Enter(this); // 새로운 상태 진입 
-            _stateCoroutine = StartCoroutine(_currentState.Execute(this)); // 상태 루프 시작 [9]
+            currentState = newState;
+            currentState.Enter(this); // 새로운 상태 진입 
+            stateCoroutine = StartCoroutine(currentState.Execute(this)); // 상태 루프 시작 [9]
         }
 
         // 상태들이 공통으로 사용할 이동 함수 (기능 병합)
-        //public void Move(Vector2 direction)
-        //{
-        //    Rb.linearVelocity = direction * Speed;
-        //    Anim.SetBool("IsMoving", true);
-        //    Anim.SetFloat("MoveX", direction.x);
-        //    Anim.SetFloat("MoveY", direction.y);
-        //    UpdateBoxRotations();
-        //}
+       
 
         public void MoveWithAvoidance(Vector2 targetDirection)
         {
@@ -148,19 +146,20 @@ namespace WatchYourBack
 
         // 적의 플레이어 발견 로직.
 
-        private void OnTriggerEnter2D(Collider2D collision)
+        public void OnBoxTriggerEnter(EnemyBoxType boxType, Collider2D collision)
         {
-            if (collision.CompareTag("Player") == true)
+            if (boxType == EnemyBoxType.Sight)
             {
                 Player = collision.transform;
             }
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        public void OnBoxTriggerExit(EnemyBoxType boxType, Collider2D collision)
         {
-            if (collision.CompareTag("Player") == true)
+                        
+            if (boxType == EnemyBoxType.Sight)
             {
-                Player = null;
+                Player = null; // 시야를 벗어났을 때만 해제
             }
         }
 
@@ -201,12 +200,12 @@ namespace WatchYourBack
         public IEnumerator LookAroundRoutine()
         {
             Vector2[] directions = { Vector2.down, Vector2.right, Vector2.up, Vector2.left };
-            float lookInterval = 0.6f; // 방향당 바라보는 시간
+            
 
             foreach (Vector2 dir in directions)
             {
                 SetLookAround(dir);                
-                yield return new WaitForSeconds(lookInterval);
+                yield return new WaitForSeconds(LookRoutineInterval);
             }
         }
 
@@ -259,22 +258,22 @@ namespace WatchYourBack
 
         private void SetTargetAngles(float attackSight,float hurt, float sight)
         {
-            _targetAttackRot = attackSight;
-            _targetHurtRot = hurt;
-            _targetSightRot = sight;
+            targetAttackRot = attackSight;
+            targetHurtRot = hurt;
+            targetSightRot = sight;
         }
 
         private void ApplyRotations()
         {
             // 1. 공격 히트박스와 뒤통수 허트박스는 즉시 회전하여 정확한 방향을 가리킵니다. 
-            AttackRangebox.localEulerAngles = new Vector3(0, 0, _targetAttackRot);
-            BackHurtBox.localEulerAngles = new Vector3(0, 0, _targetHurtRot);
-            AttackHitBox.localEulerAngles = new Vector3(0, 0, _targetAttackRot);
+            AttackRangebox.localEulerAngles = new Vector3(0, 0, targetAttackRot);
+            BackHurtBox.localEulerAngles = new Vector3(0, 0, targetHurtRot);
+            AttackHitBox.localEulerAngles = new Vector3(0, 0, targetAttackRot);
 
 
             // 2. 시야 박스만 보간을 사용하여 부드럽게 회전합니다. 
             float currentSight = SightBox.localEulerAngles.z;
-            float nextSight = Mathf.LerpAngle(currentSight, _targetSightRot, Time.deltaTime * RotationSpeed);
+            float nextSight = Mathf.LerpAngle(currentSight, targetSightRot, Time.deltaTime * RotationSpeed);
 
             SightBox.localEulerAngles = new Vector3(0, 0, nextSight);
         }
