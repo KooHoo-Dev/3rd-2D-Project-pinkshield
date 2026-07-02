@@ -6,9 +6,9 @@ namespace WatchYourBack
 
     public class RatmanPatternState : IEnemyState
     {
-
+        private const float LOOK_INTERVAL = 0.6f; // 방향당 바라보는 시간
         private readonly float arrivalConfirmDis = 0.2f; // 도착 인정거리
-        private const float LookInterval = 0.6f; // 방향당 바라보는 시간
+        
 
 
         public void Enter(EnemyStateManager manager)
@@ -66,7 +66,7 @@ namespace WatchYourBack
                 manager.SetLookAround(lookDir);
 
                 float timer = 0f;
-                while (timer < LookInterval)
+                while (timer < LOOK_INTERVAL)
                 {
                     if (manager == null)
                     {

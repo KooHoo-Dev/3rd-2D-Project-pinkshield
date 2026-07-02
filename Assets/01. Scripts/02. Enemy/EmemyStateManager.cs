@@ -73,6 +73,13 @@ namespace WatchYourBack
             ChangeState(new EnemyIdleState()); // 초기 상태 설정 
         }
 
+
+        private void Update()
+        {
+            UpdateBoxRotations();
+
+        }
+
         public void ChangeState(IEnemyState newState)
         {
             if (_currentState != null) _currentState.Exit(this); // 상태 종료 처리 [7]
@@ -122,7 +129,7 @@ namespace WatchYourBack
             Anim.SetBool("IsMoving", true);
             Anim.SetFloat("MoveX", finalDirection.x);
             Anim.SetFloat("MoveY", finalDirection.y);
-            UpdateBoxRotations();
+            
         }
 
 
@@ -130,7 +137,7 @@ namespace WatchYourBack
         {
             Rb.linearVelocity = Vector2.zero;
             Anim.SetBool("IsMoving", false);
-            UpdateBoxRotations();
+            
         }
 
         public void SetAttackAnimation(bool isAttaking)
@@ -175,9 +182,9 @@ namespace WatchYourBack
 
         public void SetLookAround(Vector2 direction)
         {
-            Anim.SetFloat("MoveX", direction.x);
+            Anim.SetFloat("MoveX", direction.x);            
             Anim.SetFloat("MoveY", direction.y);
-            UpdateBoxRotations();
+            
         }
 
 
@@ -188,7 +195,7 @@ namespace WatchYourBack
             Vector2 randomDir = directions[Random.Range(0, directions.Length)];
 
             SetLookAround(randomDir);
-            UpdateBoxRotations();
+            
         }
 
         public IEnumerator LookAroundRoutine()
@@ -198,8 +205,7 @@ namespace WatchYourBack
 
             foreach (Vector2 dir in directions)
             {
-                SetLookAround(dir);
-                UpdateBoxRotations();
+                SetLookAround(dir);                
                 yield return new WaitForSeconds(lookInterval);
             }
         }

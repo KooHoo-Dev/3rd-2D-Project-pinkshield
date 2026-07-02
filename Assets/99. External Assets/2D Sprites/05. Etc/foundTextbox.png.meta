@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b24f9f3bbb5338848aa7e0c76a268602
+guid: 73ff4566c1c7d5544a2ac7b28d9a63bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8556979828300128357
-    second: Walking left - 4_0
+      213: -8813607625741352197
+    second: foundTextbox_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,30 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walking left - 4_0
+      name: foundTextbox_0
       rect:
         serializedVersion: 2
-        x: 557
-        y: 371
-        width: 870
-        height: 1490
+        x: 8
+        y: 17
+        width: 137
+        height: 155
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 560230821df70c670800000000000000
-      internalID: 8556979828300128357
+      spriteID: bf243069f86cfa580800000000000000
+      internalID: -8813607625741352197
       vertices: []
       indices: 
       edges: []
@@ -161,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Walking left - 4_0: 8556979828300128357
+      foundTextbox_0: -8813607625741352197
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
