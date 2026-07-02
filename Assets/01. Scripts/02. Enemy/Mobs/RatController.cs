@@ -96,7 +96,7 @@ namespace WatchYourBack
             {
                             
                 Ratman.LastPlayerPosition = transform.position;
-                Ratman.ChangeState(new RatmanPatternState());
+                Ratman.ChangeState(new AlertMovePatternState());
             }
             SpriteRenderer sr = GetComponent<SpriteRenderer>();
             if (sr != null)

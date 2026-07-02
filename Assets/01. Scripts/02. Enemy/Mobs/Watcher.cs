@@ -58,7 +58,7 @@ namespace WatchYourBack
             {
 
                 Watchman.LastPlayerPosition = SightBox.transform.position;
-                Watchman.ChangeState(new WatchmanPatternState());
+                Watchman.ChangeState(new AlertMovePatternState());
             }
             yield return new WaitForSeconds(0.5f);
 

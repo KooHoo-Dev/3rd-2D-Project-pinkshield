@@ -21,7 +21,7 @@ namespace WatchYourBack
                 }
 
                 totalTimer += Time.deltaTime;
-                lookInterval += Time.deltaTime;
+                lookTimer += Time.deltaTime;
 
                 if (lookTimer >= lookInterval)
                 {
@@ -39,7 +39,7 @@ namespace WatchYourBack
 
                 yield return null;
             }
-            // 2초 지나면 순찰 시작
+            // 3초 지나면 순찰 시작
             manager.ChangeState(new EnemyPatrolState());
         }
 

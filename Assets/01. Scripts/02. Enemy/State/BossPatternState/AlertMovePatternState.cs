@@ -4,7 +4,7 @@ using UnityEngine;
 namespace WatchYourBack
 {
 
-    public class RatmanPatternState : IEnemyState
+    public class AlertMovePatternState : IEnemyState
     {
         private const float LOOK_INTERVAL = 0.6f; // 방향당 바라보는 시간
         private readonly float arrivalConfirmDis = 0.2f; // 도착 인정거리
@@ -13,7 +13,7 @@ namespace WatchYourBack
 
         public void Enter(EnemyStateManager manager)
         {
-            Debug.Log("[RatmanPattern] 쥐 죽음! 그 위치로 이동 시작");
+            Debug.Log("[AlertMovePattern] 알림 위치로 이동 시작");
             manager.Stop();
         } 
 
@@ -76,7 +76,7 @@ namespace WatchYourBack
                     // 각 방향을 바라보는 도중에도 매 프레임 시야 체크
                     if (manager.CheckPlayerInSight() == true)
                     {
-                        Debug.Log("[RatmanPattern] 탐색 중 플레이어 발견 → Chase");
+                        Debug.Log("[AlertMovePattern] 탐색 중 플레이어 발견 → Chase");
                         manager.ChangeState(new EnemyChaseState());
                         yield break;
                     }
@@ -87,7 +87,7 @@ namespace WatchYourBack
             }
 
             // 3단계 : 탐색 완료 후 순찰 복귀
-            Debug.Log("[RatmanPattern] 탐색 완료 → Patrol 복귀");
+            Debug.Log("[AlertMovePattern] 탐색 완료 → Patrol 복귀");
             manager.ChangeState(new EnemyPatrolState());
         }
 

@@ -713,7 +713,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 0.8584906, g: 0.25959566, b: 0.08503916, a: 0.07058824}
@@ -969,7 +969,7 @@ MonoBehaviour:
   Rb: {fileID: 4647400841539774387}
   Anim: {fileID: 5593063361056742643}
   Player: {fileID: 0}
-  KnockdownCutscnene: {fileID: 3920287807464842836, guid: ab31fd28f166d3048be90974323873ee, type: 3}
+  KnockdownCutscnene: {fileID: 0}
   SightBox: {fileID: 503889499848367044}
   AttackRangebox: {fileID: 8680420050086161010}
   AttackHitBox: {fileID: 6124397811168993634}
