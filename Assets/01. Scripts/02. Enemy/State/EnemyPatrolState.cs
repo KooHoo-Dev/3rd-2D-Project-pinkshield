@@ -9,7 +9,7 @@ namespace WatchYourBack
 
         public void Enter(EnemyStateManager manager) 
         {
-            
+            Debug.Log("순찰 시작");
         }
 
         public IEnumerator Execute(EnemyStateManager manager)

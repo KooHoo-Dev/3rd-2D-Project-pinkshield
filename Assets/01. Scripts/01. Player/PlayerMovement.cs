@@ -17,8 +17,6 @@ namespace WatchYourBack
         private const string isAttack = "IsAttack";
     
         [SerializeField] private float moveSpeed = 4f;
-        [SerializeField] private float dashSpeed = 12f;
-        [SerializeField] private float dashDuration = 0.2f;
         [SerializeField] private float attackCooldown = 0.8f; // 쿨타임시간
         [SerializeField] private Collider2D AttackHitBox;
         [SerializeField] private GameObject gameOverUI;
@@ -32,7 +30,7 @@ namespace WatchYourBack
         private Rigidbody2D rb;
         private Animator animator;
         private bool isKnockDown = false;
-        private bool isDashing = false;
+        
         private bool canAttack = true; // 공격 가능 여부
 
         private void Awake()
@@ -51,7 +49,7 @@ namespace WatchYourBack
 
         private void FixedUpdate()
         {
-            if (isKnockDown || isDashing) return; // 대쉬나 다운중에는 이동 제어권 상실
+            if (isKnockDown) return; // 대쉬나 다운중에는 이동 제어권 상실
             MovementControl();
         }
 
@@ -61,7 +59,7 @@ namespace WatchYourBack
             if (isKnockDown == true) return; // 다운 상태면 로직 중단
 
             Attack();
-            Dash();
+            
 
             if (SimpleInput.GetKeyDown(Key.F1))
             {
@@ -129,13 +127,7 @@ namespace WatchYourBack
 
         }
 
-        private void Dash()
-        {
-            if (SimpleInput.GetKeyDown(Key.X) && !isDashing && movement != Vector2.zero)
-            {
-                StartCoroutine(DashRoutine());
-            }
-        }
+        
 
 
         // attack 기능 재 수정 필요 
@@ -143,36 +135,30 @@ namespace WatchYourBack
         {
 
 
-            if (SimpleInput.GetKeyDown(Key.Z) && canAttack && (isDashing == false))
-            {
-                StartCoroutine(AttackCooldownRoutine());
-            }
+            if (SimpleInput.GetKeyDown(Key.Z) && canAttack)
+                    {
+                        // 공격 쿨타임 중이 아닐 때만 트리거 실행 
+                        if (SimpleInput.GetKeyDown(Key.Z) && canAttack)
+                        {
+                            StartCoroutine(AttackCooldownRoutine());
+                        }
+                    }
 
         }
 
         private IEnumerator AttackCooldownRoutine()
         {
-            canAttack = false; // 공격 초기화
-            animator.SetBool(isAttack, true);
+            canAttack = false;
+            animator.SetBool("IsAttack", true); // 애니메이터의 전이 조건 
 
-            yield return new WaitForSeconds(attackCooldown);
-
+            yield return new WaitForSeconds(attackCooldown); // 0.5초 등 설정된 쿨타임
+            animator.SetBool("IsAttack", false); 
             canAttack = true;
         }
 
 
-        private IEnumerator DashRoutine()
-        {
-            isDashing = true;
-            animator.SetTrigger("OnDash");
 
-            // 현재 바라보는 방향으로 짧고 강하게 이동
-            rb.linearVelocity = movement.normalized * dashSpeed;
-
-            yield return new WaitForSeconds(dashDuration);
-
-            isDashing = false;
-        }
+        
 
         private IEnumerator KnockDownRoutine()
         {
@@ -184,6 +170,7 @@ namespace WatchYourBack
             yield return new WaitForSeconds(2f);
 
             hitCutScene.SetActive(false);
+            gameObject.SetActive(false);
 
             // 2. 게임오버 UI 활성화
             if (gameOverUI != null)
