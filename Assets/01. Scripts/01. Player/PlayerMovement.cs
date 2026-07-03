@@ -149,10 +149,10 @@ namespace WatchYourBack
         private IEnumerator AttackCooldownRoutine()
         {
             canAttack = false;
-            animator.SetBool("IsAttack", true); // 애니메이터의 전이 조건 
+            animator.SetBool(isAttack, true); // 애니메이터의 전이 조건 
 
             yield return new WaitForSeconds(attackCooldown); // 0.5초 등 설정된 쿨타임
-            animator.SetBool("IsAttack", false); 
+            animator.SetBool(isAttack, false); 
             canAttack = true;
         }
 
