@@ -30,6 +30,8 @@ namespace WatchYourBack
         [SerializeField] private GameObject SecondDoor; //Watchman 처치 시 비활성화
         [SerializeField] private GameObject ThirdDoor; //Ratman 처치 시 비활성화
 
+        private float doorTime = 2.0f;
+
 
         private void Update()
         {
@@ -42,17 +44,17 @@ namespace WatchYourBack
 
         private IEnumerator OpenDoorSequence(GameObject door, CinemachineCamera doorCam)
         {
-            // 1. 효과음 재생 [2]
+            // 1. 효과음 재생 
             audioSource.PlayOneShot(doorOpenSound);
 
-            // 2. 문 카메라 우선순위 높여서 화면 전환 [1]
+            // 2. 문 카메라 우선순위 높여서 화면 전환 
             doorCam.Priority = 20;
 
             // 3. 문 열기 (콜라이더 비활성화)
             door.GetComponent<BoxCollider2D>().enabled = false;
 
-            // 4. 2초간 문을 보여준 뒤 다시 플레이어에게 복귀 [3]
-            yield return new WaitForSeconds(2.0f);
+            // 4. 2초간 문을 보여준 뒤 다시 플레이어에게 복귀 
+            yield return new WaitForSeconds(doorTime);
             doorCam.Priority = 0;
         }
 

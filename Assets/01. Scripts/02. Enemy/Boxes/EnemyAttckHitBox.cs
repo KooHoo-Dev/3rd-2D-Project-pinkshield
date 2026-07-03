@@ -4,17 +4,29 @@ namespace WatchYourBack
 {
     public class EnemyAttackHitBox : MonoBehaviour
     {
+
+        private EnemyStateManager manager;
+
+        private void Awake()
+        {
+            manager = GetComponentInParent<EnemyStateManager>();
+        }
+
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            // 플레이어의 캡슐 콜라이더(HurtBox 역할)와 접촉 확인
-            if (collision.CompareTag("Player") == true)
+
+            if (collision.CompareTag("Player") == false) return;
+
+            //플레이어가 먼저 뒤통수를 친 경우 무시
+            if (manager != null && manager.TryLockCombat() == false) return;
+
+            
+            PlayerMovement player = collision.GetComponent<PlayerMovement>();
+            if (player != null)
             {
-                PlayerMovement player = collision.GetComponent<PlayerMovement>();
-                if (player != null)
-                {
-                    player.KnockDown();
-                }
+                player.KnockDown();
             }
+            
         }
     }
 }

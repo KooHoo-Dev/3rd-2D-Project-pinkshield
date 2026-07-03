@@ -9,6 +9,12 @@ namespace WatchYourBack
 
         private const float LookRoutineInterval = 0.6f;
 
+        // 컷씬 전용 딜레이초
+        private const float CutsceneDuration = 1.8f;
+        private const float PreTriggerDelay = 0.3f;
+        private const float PostTriggerDelay = 0.9f;
+
+
         [Header("Settings")]
         public float Speed = 3.0f;
         public Transform PatrolPosition;
@@ -48,6 +54,9 @@ namespace WatchYourBack
         public Vector2 BoxSize = new Vector2(1.0f, 1.0f); // 캐릭터 실제 크기보다 약간 작게 설정
         public float SkinWidth = 0.1f; // 끼임 방지 여유 공간
 
+        [Header("Darkerman Boss(선택사항)")]
+        [SerializeField] private DarkermanBossManager bossManager;
+
 
 
         public LayerMask ObstacleLayer;
@@ -56,21 +65,25 @@ namespace WatchYourBack
         public Vector2 LastPlayerPosition { get; set; }
 
 
-
+        
         private IEnemyState currentState;
         private Coroutine stateCoroutine;
+        private DarkermanIdentity identity;
 
-        // 각도들
+        // 공격 시야, 뒷통수, 시야박스의 각도값
         private float targetAttackRot; 
         private float targetHurtRot;
         private float targetSightRot;
-        
 
+        private bool combatResolved = false; // 전투중의 히트 박스 
+
+       
         private void Awake()
         {
             Rb = GetComponent<Rigidbody2D>();
             Anim = GetComponentInChildren<Animator>();
             SpawnPosition = transform.position; // 시작 위치 기억 
+            identity = GetComponent<DarkermanIdentity>(); // 다커맨 보스 전용 
         }
 
         private void Start()
@@ -107,7 +120,7 @@ namespace WatchYourBack
             // 1. 여러 갈래로 레이를 쏴서 비어있는 가장 가까운 경로 탐색 
             for (int i = 0; i < RayCount; i++)
             {
-                // 0, 30, -30... 순서로 각도 계산
+                // 예) 0, 30, -30... 순서로 각도 계산
                 float angle = AvoidanceAngle * (i % 2 == 0 ? i / 2 : -(i / 4 + 1));
                 Vector2 checkDir = Quaternion.Euler(0, 0, angle) * targetDirection;
 
@@ -143,6 +156,25 @@ namespace WatchYourBack
             Anim.SetBool("IsAttack", isAttaking);
         }
 
+        // 적, 플레이어 히트 박스 판별기
+        public bool TryLockCombat()
+        { 
+            if(combatResolved == true) return false;
+
+            combatResolved = true;
+            return true;
+
+        }
+
+
+        // 새로운 전투가 시작될 때 다시 판정 가능하도록 초기화
+        // ?보스 처치 할 때마다 세이브 포인트를 만들어서 해당 부분에서 시작하는 기능 추가해야함
+
+
+        public void ResetCombatLock()
+        {
+            combatResolved = false;
+        }
 
         // 적의 플레이어 발견 로직.
 
@@ -162,6 +194,54 @@ namespace WatchYourBack
                 Player = null; // 시야를 벗어났을 때만 해제
             }
         }
+
+
+        // 적 뒤통수 타격 시 KnockDownState 전환 
+        public void OnBackHit(Collider2D collision)
+        {
+            // 플레이어 공격 히트박스가 없으면 패스
+            if (collision.CompareTag("PlayerAttack") == false) return;
+            if (TryLockCombat() == false) return; // 이미 적이 먼저 플레이어를 맞춘 경우 패스
+
+            // 다커맨이 가짜가 참일때 = identity가 비어있거나 isRealDarekman 이 거짓일때 
+            bool isFakeDarkerman = identity != null && identity.IsRealDarkerman == false;
+
+
+            // 가짜 다커맨일때
+            if (isFakeDarkerman == true) 
+            {
+                ChangeState(new EnemyFakeKnockdownState());
+                return;
+            }
+
+            // 진짜 Darkerman 이거나 Darkerman 이 아닌 다른 보스들
+            if (identity != null)
+            {
+                bossManager.RealDarkermanDefeated();
+            }
+
+             Debug.Log("뒤통수 피격! 즉시 다운 상태로 전환");
+             ChangeState(new EnemyKnockDownState());
+            
+        }
+
+        public IEnumerator PlayKnockDownRoutine(bool showCutscene)
+        {
+            if (showCutscene == true)
+            {
+                KnockdownCutscnene.SetActive(true);
+                yield return new WaitForSeconds(CutsceneDuration);
+                KnockdownCutscnene.SetActive(false);
+            }
+
+            yield return new WaitForSeconds(PreTriggerDelay);
+            Anim.SetTrigger("OnKnockDown");
+
+            yield return new WaitForSeconds(PostTriggerDelay);
+            gameObject.SetActive(false);
+        }
+
+
 
         // 시야 장애물 체크
         public bool CheckPlayerInSight()
@@ -197,6 +277,8 @@ namespace WatchYourBack
             
         }
 
+
+        // 
         public IEnumerator LookAroundRoutine()
         {
             Vector2[] directions = { Vector2.down, Vector2.right, Vector2.up, Vector2.left };
@@ -278,15 +360,7 @@ namespace WatchYourBack
             SightBox.localEulerAngles = new Vector3(0, 0, nextSight);
         }
 
-        public void OnBackHit(Collider2D collision)
-        {
-            // 플레이어의 공격 히트박스 태그가 "PlayerAttack"
-            if (collision.CompareTag("PlayerAttack") == true)
-            {
-                Debug.Log("뒤통수 피격! 즉시 다운 상태로 전환");
-                ChangeState(new EnemyKnockDownState());
-            }
-        }
+       
 
     }
 
