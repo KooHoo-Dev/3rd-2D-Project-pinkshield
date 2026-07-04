@@ -140,10 +140,10 @@ namespace WatchYourBack
         {
 
 
-            if (SimpleInput.GetKeyDown(Key.Z) && canAttack)
+            if (SimpleInput.GetKeyDown(Key.Space) && canAttack)
                     {
                         // 공격 쿨타임 중이 아닐 때만 트리거 실행 
-                        if (SimpleInput.GetKeyDown(Key.Z) && canAttack)
+                        if (SimpleInput.GetKeyDown(Key.Space) && canAttack)
                         {
                             StartCoroutine(AttackCooldownRoutine());
                         }

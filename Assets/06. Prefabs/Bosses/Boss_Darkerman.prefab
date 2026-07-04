@@ -1010,6 +1010,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476bc0777f7211d4da4ff602364577e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.EnemyStateManager
+  roomIndex: 3
   Speed: 4
   PatrolPosition: {fileID: 0}
   SpawnPosition: {x: 0, y: 0}

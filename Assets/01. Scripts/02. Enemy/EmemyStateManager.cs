@@ -18,6 +18,10 @@ namespace WatchYourBack
 
         public bool IsKnockDown => currentState is EnemyKnockDownState || currentState is EnemyFakeKnockdownState;
 
+        [Header("= 방 진행 연동 (일반 방 보스만 사용) =")]
+        [SerializeField] private int roomIndex = -1; // -1이면 일반 몹, 0 이상이면 그 번호의 방 보스
+
+
         [Header("Settings")]
         public float Speed = 3.0f;
         public Transform PatrolPosition;
