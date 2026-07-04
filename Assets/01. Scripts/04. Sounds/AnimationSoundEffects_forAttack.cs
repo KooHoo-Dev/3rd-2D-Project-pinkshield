@@ -32,6 +32,11 @@ namespace WatchYourBack
             audioSource.PlayOneShot(attackSound);
         }
 
+        public void PlaySlapSound()
+        { 
+        
+        }
+
     }
 }
 
