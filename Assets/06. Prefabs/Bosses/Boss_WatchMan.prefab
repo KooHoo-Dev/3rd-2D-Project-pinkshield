@@ -561,8 +561,8 @@ GameObject:
   - component: {fileID: 7004578005794483117}
   - component: {fileID: 4372498994679608771}
   - component: {fileID: 381600251792432623}
-  - component: {fileID: 496757118863221696}
   - component: {fileID: 4881794474804229661}
+  - component: {fileID: 1217421472738304596}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -670,20 +670,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &496757118863221696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6674210078282957774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc29c2713f89caf48a265f384a99e24f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.AnimationSoundEffects
-  audioSource: {fileID: 4881794474804229661}
-  attackSound: {fileID: 8300000, guid: 38683d6727d93ba43bc1dbfcdabe61c4, type: 3}
 --- !u!82 &4881794474804229661
 AudioSource:
   m_ObjectHideFlags: 0
@@ -781,6 +767,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1217421472738304596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6674210078282957774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e6f5d20f92062940adc09c767dcc382, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.AnimationSoundEffects
+  audioSource: {fileID: 4881794474804229661}
+  attackSound: {fileID: 8300000, guid: 38683d6727d93ba43bc1dbfcdabe61c4, type: 3}
 --- !u!1 &7842627245654638565
 GameObject:
   m_ObjectHideFlags: 0

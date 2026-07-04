@@ -226,14 +226,20 @@ namespace WatchYourBack
                 return;
             }
 
-            // 진짜 Darkerman 이거나 Darkerman 이 아닌 다른 보스들
+            // 진짜 Darkerman일때
             if (identity != null)
             {
                 
                 bossManager.RealDarkermanDefeated();
             }
 
-             Debug.Log("뒤통수 피격! 즉시 다운 상태로 전환");
+            else if (roomIndex >= 0) // 일반 방 보스
+            {
+                GameProgressManager.Instance.MarkRoomCleared(roomIndex);
+            }
+
+
+            Debug.Log("뒤통수 피격! 즉시 다운 상태로 전환");
              ChangeState(new EnemyKnockDownState());
             
         }

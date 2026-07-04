@@ -427,7 +427,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2257865603713450864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc29c2713f89caf48a265f384a99e24f, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e6f5d20f92062940adc09c767dcc382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.AnimationSoundEffects
   audioSource: {fileID: 3249417638343910403}
@@ -758,6 +758,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 476bc0777f7211d4da4ff602364577e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.EnemyStateManager
+  roomIndex: -1
   Speed: 4
   PatrolPosition: {fileID: 0}
   SpawnPosition: {x: 0, y: 0}

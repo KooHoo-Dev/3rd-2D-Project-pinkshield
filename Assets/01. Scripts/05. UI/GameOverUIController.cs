@@ -126,6 +126,8 @@ namespace WatchYourBack
         /// </summary>
         public void RestartCurrentScene()
         {
+            GameProgressManager.Instance.ResetProgress();
+
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentSceneIndex);
         }
@@ -136,7 +138,8 @@ namespace WatchYourBack
         /// </summary>
         public void ContinueFromLastRoom()
         {
-            // TODO: 진행 상황 저장/불러오기 시스템과 연동 예정
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentSceneIndex);
         }
 
         /// <summary>

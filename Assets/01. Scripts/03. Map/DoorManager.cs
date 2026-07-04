@@ -63,6 +63,45 @@ namespace WatchYourBack
         }
 
 
+        /// <summary>
+        /// "이어하기"로 씬이 시작될 때, 이미 클리어한 방까지의 문/커튼을 연출 없이 즉시 적용합니다
+        /// clearedRoomIndex: 0=Alleyman까지 클리어, 1=Watchman까지, 2=Ratman까지
+        /// </summary>
+        public void ApplyProgressInstantly(int clearedRoomIndex)
+        {
+            if (clearedRoomIndex >= 0)
+            {
+                OpenDoorInstantly(firstDoor);
+                SetCurtainAlpha(secondCurtain, StandardCurtainAlpha);
+            }
+
+            if (clearedRoomIndex >= 1)
+            {
+                OpenDoorInstantly(secondDoor);
+                SetCurtainAlpha(thirdCurtain, StandardCurtainAlpha);
+            }
+
+            if (clearedRoomIndex >= 2)
+            {
+                OpenDoorInstantly(thirdDoor);
+                SetCurtainAlpha(fourthCurtain, DarkerCurtainAlpha);
+            }
+        }
+
+        /// <summary>
+        /// 연출(카메라, 효과음) 없이 문 콜라이더만 즉시 비활성화합니다
+        /// </summary>
+        private void OpenDoorInstantly(GameObject door)
+        {
+            if (door == null) return;
+
+            if (door.TryGetComponent<BoxCollider2D>(out BoxCollider2D col))
+            {
+                col.enabled = false;
+            }
+        }
+
+
 
         private void HandleBossDefeat(GameObject enemy, GameObject door, CinemachineCamera doorCam, 
             SpriteRenderer nextCurtain, int targetAlpha)
@@ -104,10 +143,7 @@ namespace WatchYourBack
             doorCam.Priority = ActiveCameraPriority;
 
             // 3. 문 열기 (콜라이더 비활성화)
-            if (door.TryGetComponent<BoxCollider2D>(out BoxCollider2D col))
-            {
-                col.enabled = false;
-            }
+            OpenDoorInstantly(door);
 
             // 4. 2초간 문을 보여준 뒤 다시 플레이어에게 복귀 
             yield return new WaitForSeconds(doorTime);
