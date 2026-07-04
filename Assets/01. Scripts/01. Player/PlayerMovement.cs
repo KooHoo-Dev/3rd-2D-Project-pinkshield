@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 namespace WatchYourBack
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour, IKnockDownStatus
     {   
     
         private const string horizontal = "Horizontal";
@@ -15,7 +15,10 @@ namespace WatchYourBack
         private const string lastHorizontal = "LastHorizontal";
         private const string lastVertical = "LastVertical";
         private const string isAttack = "IsAttack";
-    
+
+
+        public bool IsKnockDown => isKnockDown;
+
         [SerializeField] private float moveSpeed = 4f;
         [SerializeField] private float attackCooldown = 0.8f; // 쿨타임시간
         [SerializeField] private Collider2D AttackHitBox;
@@ -25,7 +28,9 @@ namespace WatchYourBack
         [Header("Debug")]
         [SerializeField] private EnemyStateManager debugTargetEnemy;
 
-               
+        
+
+                
         private Vector2 movement;
         private Rigidbody2D rb;
         private Animator animator;

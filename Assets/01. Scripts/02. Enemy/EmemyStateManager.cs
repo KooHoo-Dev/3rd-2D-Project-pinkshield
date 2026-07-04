@@ -4,8 +4,10 @@ using UnityEngine;
 
 namespace WatchYourBack
 {
-    public class EnemyStateManager : MonoBehaviour
+    public class EnemyStateManager : MonoBehaviour, IKnockDownStatus
     {
+
+        
 
         private const float LookRoutineInterval = 0.6f;
 
@@ -14,6 +16,7 @@ namespace WatchYourBack
         private const float PreTriggerDelay = 0.3f;
         private const float PostTriggerDelay = 0.9f;
 
+        public bool IsKnockDown => currentState is EnemyKnockDownState || currentState is EnemyFakeKnockdownState;
 
         [Header("Settings")]
         public float Speed = 3.0f;
@@ -76,6 +79,7 @@ namespace WatchYourBack
         private float targetSightRot;
 
         private bool combatResolved = false; // 전투중의 히트 박스 
+        
 
        
         private void Awake()
@@ -88,6 +92,7 @@ namespace WatchYourBack
 
         private void Start()
         {
+            
             ChangeState(new EnemyIdleState()); // 초기 상태 설정 
         }
 
@@ -154,6 +159,8 @@ namespace WatchYourBack
         public void SetAttackAnimation(bool isAttaking)
         {
             Anim.SetBool("IsAttack", isAttaking);
+            
+            
         }
 
         // 적, 플레이어 히트 박스 판별기
@@ -210,6 +217,7 @@ namespace WatchYourBack
             // 가짜 다커맨일때
             if (isFakeDarkerman == true) 
             {
+                
                 ChangeState(new EnemyFakeKnockdownState());
                 return;
             }
@@ -217,6 +225,7 @@ namespace WatchYourBack
             // 진짜 Darkerman 이거나 Darkerman 이 아닌 다른 보스들
             if (identity != null)
             {
+                
                 bossManager.RealDarkermanDefeated();
             }
 

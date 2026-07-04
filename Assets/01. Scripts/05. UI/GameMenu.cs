@@ -38,6 +38,12 @@ namespace WatchYourBack
         [SerializeField] private float delayBetweenElements = 0.5f;    // 요소 간 나타나는 시간 간격
         [SerializeField] private float bossDuration = 0.4f;            // 각 보스가 나타나있는 시간
 
+        [Header("= 오디오 설정 =")]
+        [SerializeField] private AudioSource bgmAudioSource;
+        [SerializeField] private AudioClip bgmClip;
+        [SerializeField] private float bgmFadeOutDuration = 1.0f; // 씬 전환 시 페이드아웃 시간
+
+
         // =================== 게임 상태 정의 ===================
         private enum GameState
         {
@@ -67,6 +73,9 @@ namespace WatchYourBack
             
             // 모든 UI 요소 숨기기
             AllElementsDeactivate();
+
+            // 배경음악 재생
+            PlayBackgroundMusic(); 
 
             // 전체 흐름 시작
             StartCoroutine(MenuSequence());
@@ -110,6 +119,22 @@ namespace WatchYourBack
 
             
         }
+
+        /// <summary>
+        /// 메뉴 배경음악을 재생합니다
+        /// </summary>
+        private void PlayBackgroundMusic()
+        {
+            if (bgmAudioSource == null || bgmClip == null) return;
+
+            bgmAudioSource.clip = bgmClip;
+            bgmAudioSource.loop = true;
+            bgmAudioSource.Play();
+        }
+
+
+
+
 
         // =================== 메인 시퀀스 함수 ===================
 
@@ -184,7 +209,7 @@ namespace WatchYourBack
         {
             bool enterPressed = false;
 
-            while (!enterPressed)
+            while (enterPressed == false)
             {
                 // 키보드 입력 시스템으로 Enter 키 감지
                 if (Keyboard.current.enterKey.wasPressedThisFrame)
@@ -338,7 +363,7 @@ namespace WatchYourBack
         private void OnGameStartSelected()
         {
             Debug.Log("게임 시작!");
-            SceneManager.LoadScene(1);
+            StartCoroutine(FadeOutBgmAndLoadScene(1, bgmFadeOutDuration));
         }
 
         /// <summary>
@@ -360,6 +385,7 @@ namespace WatchYourBack
         }
 
         // =================== 효과 함수들 (Coroutine) ===================
+
 
         /// <summary>
         /// 오브젝트를 천천히 페이드인합니다 (알파값 0 -> 1)
@@ -403,6 +429,47 @@ namespace WatchYourBack
                 yield return null; // 다음 프레임 대기
             }
         }
+
+        /// <summary>
+        /// 배경음악을 서서히 줄이면서, 페이드가 끝난 후 씬을 전환합니다
+        /// </summary>
+        private IEnumerator FadeOutBgmAndLoadScene(int sceneIndex, float fadeDuration)
+        {
+            AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
+            asyncLoad.allowSceneActivation = false;
+
+            if (bgmAudioSource != null)
+            {
+                yield return FadeOutBgm(fadeDuration);
+            }
+
+            asyncLoad.allowSceneActivation = true;
+        }
+
+        /// <summary>
+        /// BGM 볼륨을 현재값에서 0까지 서서히 낮춥니다
+        /// </summary>
+        private IEnumerator FadeOutBgm(float duration)
+        {
+            float startVolume = bgmAudioSource.volume;
+            float elapsedTime = 0f;
+
+            while (elapsedTime < duration)
+            {
+                elapsedTime += Time.deltaTime;
+                float progress = elapsedTime / duration;
+                bgmAudioSource.volume = Mathf.Lerp(startVolume, 0f, progress);
+
+                yield return null;
+            }
+
+            bgmAudioSource.volume = 0f;
+            bgmAudioSource.Stop();
+        }
+
+
+
+
 
         // =================== 유틸리티 함수들 ===================
 
