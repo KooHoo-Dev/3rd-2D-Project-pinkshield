@@ -25,8 +25,7 @@ namespace WatchYourBack
         [SerializeField] private GameObject gameOverUI;
         [SerializeField] private GameObject hitCutScene;
 
-        [Header("Debug")]
-        [SerializeField] private EnemyStateManager debugTargetEnemy;
+        
 
         
 
@@ -71,10 +70,7 @@ namespace WatchYourBack
                 Restart();
             }
 
-            if (SimpleInput.GetKeyDown(Key.F2))
-            {
-                KillEnemy();
-            }
+            
                        
         }
 
@@ -103,16 +99,7 @@ namespace WatchYourBack
             SceneManager.LoadScene(currentSceneIndex);                       
         }
 
-        public void KillEnemy()
-        {
-            if (debugTargetEnemy == null)
-            {
-                Debug.LogError("KillEnemy : debugTargetEnemy가 연결되지 않았습니다.");
-                return;
-            }
-
-            debugTargetEnemy.ChangeState(new EnemyKnockDownState());
-        }
+        
 
 
         private void MovementControl()

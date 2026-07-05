@@ -107,6 +107,16 @@ namespace WatchYourBack
 
         }
 
+        /// <summary>
+        /// 매 프레임 종료 시점에 전투 판정 잠금을 초기화합니다
+        /// 같은 프레임 안의 동시 판정(플레이어/적 동시 히트)만 막고, 다음 프레임부터는 다시 판정 가능하게 합니다
+        /// </summary>
+        private void LateUpdate()
+        {
+            combatResolved = false;
+        }
+
+
         public void ChangeState(IEnemyState newState)
         {
             if (currentState != null) currentState.Exit(this); // 상태 종료 처리 [7]

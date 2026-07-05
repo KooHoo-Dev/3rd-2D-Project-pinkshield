@@ -26,6 +26,13 @@ namespace WatchYourBack
         [Header("Boss_Watchman")]
         public EnemyStateManager Watchman;
 
+        [Header("Audio Settings")]
+        [SerializeField] private AudioSource audioSource; // 
+        [SerializeField] private AudioClip heySound;   // 
+
+
+
+        private bool IsTextboxOn = false;
         private Rigidbody2D watcherRb;
 
 
@@ -41,7 +48,12 @@ namespace WatchYourBack
         // 시야박스에 들어온 순간, Watchman을 불러온다 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.CompareTag("Player"))
+            if (Watchman == null) return;
+
+
+
+
+            if (collision.CompareTag("Player") && Watchman.gameObject.activeSelf == true)
             {
                 StartCoroutine(FindAlrert());
             }
@@ -50,9 +62,17 @@ namespace WatchYourBack
         private IEnumerator FindAlrert()
         {
             alrertTextbox.SetActive(true);
+            IsTextboxOn = true;
+            if (IsTextboxOn == true)
+            {
+                if (audioSource == null || heySound == null) yield break;
+                audioSource.pitch = Random.Range(0.9f, 1.1f);
+                audioSource.PlayOneShot(heySound);
+            }
+            
 
             yield return new WaitForSeconds(0.5f);
-
+            IsTextboxOn = false;
 
             if (Watchman != null)
             {
@@ -64,6 +84,8 @@ namespace WatchYourBack
 
             alrertTextbox.SetActive(false);
         }
+
+
 
     }
 

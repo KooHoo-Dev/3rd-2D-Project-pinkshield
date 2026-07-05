@@ -338,6 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.AnimationSoundEffects
   audioSource: {fileID: 4818520333968981830}
   attackSound: {fileID: 8300000, guid: 38683d6727d93ba43bc1dbfcdabe61c4, type: 3}
+  footstepSound: {fileID: 8300000, guid: e1c29a418e2abfd4fae41dd50c6e6a08, type: 3}
 --- !u!1 &3723249617383778651
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,7 +731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7998093385096382014}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.387379, y: 2.3504105, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -830,7 +831,7 @@ MonoBehaviour:
   Rb: {fileID: 8628271088886308264}
   Anim: {fileID: 6024066751416032040}
   Player: {fileID: 0}
-  KnockdownCutscnene: {fileID: 1966263122513474428, guid: f33419d71df30144a960d6814056d9c8, type: 3}
+  KnockdownCutscnene: {fileID: 0}
   SightBox: {fileID: 823119012626122860}
   AttackRangebox: {fileID: 8381969111841809414}
   AttackHitBox: {fileID: 8549850946107212073}
