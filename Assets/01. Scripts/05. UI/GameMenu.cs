@@ -364,6 +364,7 @@ namespace WatchYourBack
         {
             Debug.Log("게임 시작!");
             StartCoroutine(FadeOutBgmAndLoadScene(1, bgmFadeOutDuration));
+            
         }
 
         /// <summary>

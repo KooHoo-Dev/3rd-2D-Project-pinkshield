@@ -14,7 +14,10 @@ namespace WatchYourBack
         {
 
             Debug.Log("추적 상태 시작");
-            
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.NotifyCombatStarted();
+            }
         }
 
         
@@ -63,6 +66,11 @@ namespace WatchYourBack
         }
 
 
-        public void Exit(EnemyStateManager manager) => manager.Stop();
+        public void Exit(EnemyStateManager manager)
+        {
+            manager.Stop();
+            SoundManager.Instance.NotifyCombatEnded(); 
+        }
+        
     }
 }

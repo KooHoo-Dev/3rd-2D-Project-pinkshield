@@ -72,7 +72,7 @@ namespace Study.Utilities
                 OnDispose();
                 instance = null;
                 isInitialized = false;
-                applicationIsQuitting = true;
+                //applicationIsQuitting = true;
             }
         }
 

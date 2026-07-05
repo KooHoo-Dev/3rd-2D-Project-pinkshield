@@ -13,8 +13,10 @@ namespace WatchYourBack
             // 공격 시작 시 이동 정지 및 애니메이션 파라미터 설정        
             manager.Stop();
             manager.UpdateBoxRotations();
-            
-            
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.NotifyCombatStarted();
+            }
         }
 
         public IEnumerator Execute(EnemyStateManager manager)
@@ -35,7 +37,7 @@ namespace WatchYourBack
 
         public void Exit(EnemyStateManager manager)
         {
-            
+            SoundManager.Instance.NotifyCombatEnded();
         }
     }
 }
