@@ -13,7 +13,8 @@ namespace WatchYourBack
         [SerializeField] private EnemyStateManager debugTargetRatman;
         [SerializeField] private EnemyStateManager debugTargetDarkerman;
 
-
+        [Header("Darkerman Boss(엔딩호출)")]
+        [SerializeField] private DarkermanBossManager bossManager;
 
 
         private void Update()
@@ -31,6 +32,11 @@ namespace WatchYourBack
             if (SimpleInput.GetKeyDown(Key.F4))
             {
                 KillRatman();
+            }
+
+            if (SimpleInput.GetKeyDown(Key.F5))
+            {
+                KillDarkerman();
             }
         }
 
@@ -69,7 +75,20 @@ namespace WatchYourBack
             }
 
             debugTargetRatman.ChangeState(new EnemyKnockDownState());
+
         }
+
+        public void KillDarkerman()
+        {
+            if (debugTargetDarkerman == null)
+            {
+                Debug.LogError("KillEnemy : debugTargetEnemy가 연결되지 않았습니다.");
+                return;
+            }
+
+            bossManager.RealDarkermanDefeated();
+        }
+
     }
 }
 
