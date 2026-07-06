@@ -79,7 +79,6 @@ MonoBehaviour:
   AttackHitBox: {fileID: 3712412578285627995}
   gameOverUI: {fileID: 0}
   hitCutScene: {fileID: 0}
-  debugTargetEnemy: {fileID: 0}
 --- !u!70 &1545053061508676632
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -424,6 +423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.AnimationSoundEffects
   audioSource: {fileID: 6081744692324413681}
   attackSound: {fileID: 8300000, guid: 015ea2737222855438b4e2502278b3fa, type: 3}
+  footstepSound: {fileID: 0}
 --- !u!1 &5541825452657140451
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +506,7 @@ SpriteRenderer:
   m_SortingOrder: 11
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.35577706, g: 0.8679245, b: 0.28248486, a: 0.19607843}
+  m_Color: {r: 0.35577706, g: 0.8679245, b: 0.28248486, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

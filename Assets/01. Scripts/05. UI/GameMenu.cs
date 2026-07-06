@@ -10,7 +10,7 @@ namespace WatchYourBack
     /// 게임 메뉴 관리 스크립트
     /// 메뉴의 시작 화면부터 선택까지의 전체 흐름을 담당합니다.
     /// </summary>
-    public class GameMenu : SingletonBase<GameMenu>
+    public class GameMenu : MonoBehaviour
     {
         // =================== 인스펙터에 할당할 오브젝트들 ===================
 
@@ -68,7 +68,7 @@ namespace WatchYourBack
         /// <summary>
         /// 싱글톤 초기화 시 호출되는 함수
         /// </summary>
-        protected override void OnInitialize()
+        private void Awake()
         {
             
             // 모든 UI 요소 숨기기

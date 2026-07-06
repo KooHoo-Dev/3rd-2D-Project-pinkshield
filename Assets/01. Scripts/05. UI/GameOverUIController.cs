@@ -147,6 +147,7 @@ namespace WatchYourBack
         /// </summary>
         public void LoadMainMenu()
         {
+            GameProgressManager.Instance.ResetProgress();
             SceneManager.LoadScene("GameMenu");
         }
     }

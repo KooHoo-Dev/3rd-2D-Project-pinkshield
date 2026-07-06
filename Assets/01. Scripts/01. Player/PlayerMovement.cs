@@ -34,7 +34,8 @@ namespace WatchYourBack
         private Rigidbody2D rb;
         private Animator animator;
         private bool isKnockDown = false;
-        
+        private bool isInputLocked = false; // 튜토리얼 등 연출 중 입력 차단용
+
         private bool canAttack = true; // 공격 가능 여부
 
         private void Awake()
@@ -61,6 +62,7 @@ namespace WatchYourBack
         private void Update()
         {
             if (isKnockDown == true) return; // 다운 상태면 로직 중단
+            if (isInputLocked == true) return;
 
             Attack();
             
@@ -99,11 +101,32 @@ namespace WatchYourBack
             SceneManager.LoadScene(currentSceneIndex);                       
         }
 
-        
+        /// <summary>
+        /// 플레이어의 이동/공격 입력을 잠그거나 풉니다 (튜토리얼, 컷신 등에서 사용)
+        /// </summary>
+        public void SetInputLocked(bool isLocked)
+        {
+            isInputLocked = isLocked;
+
+            if (isLocked == true)
+            {
+                rb.linearVelocity = Vector2.zero;
+                animator.SetBool(isAttack, false); // 잠그는 순간 공격 애니메이션도 확실히 종료
+            }
+        }
 
 
         private void MovementControl()
         {
+            if (isInputLocked == true) 
+            {
+                rb.linearVelocity = Vector2.zero;
+                animator.SetFloat(horizontal, 0f);
+                animator.SetFloat(vertical, 0f);
+                return;
+            }
+
+
             movement.Set(InputManager.Movement.x, InputManager.Movement.y);
             rb.linearVelocity = movement * moveSpeed;
 
