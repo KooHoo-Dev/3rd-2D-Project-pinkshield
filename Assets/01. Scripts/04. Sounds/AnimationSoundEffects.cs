@@ -11,6 +11,7 @@ namespace WatchYourBack
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip attackSound;
         [SerializeField] private AudioClip footstepSound;
+        [SerializeField] private AudioClip knockdownSound;
 
         private IKnockDownStatus knockDownStatus;
         private Camera mainCamera;
@@ -49,6 +50,15 @@ namespace WatchYourBack
             audioSource.PlayOneShot(footstepSound, FootstepVolumeScale);
 
         }
+
+        public void KnockdownSound()
+        {
+            if (audioSource == null || knockdownSound == null) return;
+
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.PlayOneShot(knockdownSound);
+        }
+
 
         /// <summary>
         /// 이 오브젝트가 현재 메인 카메라의 화면 범위 안에 보이는지 확인합니다

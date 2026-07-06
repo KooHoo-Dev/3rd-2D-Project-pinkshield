@@ -170,12 +170,7 @@ namespace WatchYourBack
             
         }
 
-        public void SetAttackAnimation(bool isAttaking)
-        {
-            Anim.SetBool("IsAttack", isAttaking);
-            
-            
-        }
+        
 
         // 적, 플레이어 히트 박스 판별기
         public bool TryLockCombat()
@@ -189,8 +184,7 @@ namespace WatchYourBack
 
 
         // 새로운 전투가 시작될 때 다시 판정 가능하도록 초기화
-        // ?보스 처치 할 때마다 세이브 포인트를 만들어서 해당 부분에서 시작하는 기능 추가해야함
-
+        
 
         public void ResetCombatLock()
         {
@@ -222,6 +216,7 @@ namespace WatchYourBack
         {
             // 플레이어 공격 히트박스가 없으면 패스
             if (collision.CompareTag("PlayerAttack") == false) return;
+            if (IsKnockDown == true) return;
             if (TryLockCombat() == false) return; // 이미 적이 먼저 플레이어를 맞춘 경우 패스
 
             // 다커맨이 가짜가 참일때 = identity가 비어있거나 isRealDarekman 이 거짓일때 

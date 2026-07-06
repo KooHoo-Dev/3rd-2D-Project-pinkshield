@@ -339,6 +339,7 @@ MonoBehaviour:
   audioSource: {fileID: 4818520333968981830}
   attackSound: {fileID: 8300000, guid: 38683d6727d93ba43bc1dbfcdabe61c4, type: 3}
   footstepSound: {fileID: 8300000, guid: e1c29a418e2abfd4fae41dd50c6e6a08, type: 3}
+  knockdownSound: {fileID: 8300000, guid: 9e77e500ed4c9a64ca2abcd6f4412e9c, type: 3}
 --- !u!1 &3723249617383778651
 GameObject:
   m_ObjectHideFlags: 0

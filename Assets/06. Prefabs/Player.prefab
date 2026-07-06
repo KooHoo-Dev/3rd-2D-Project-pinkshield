@@ -423,7 +423,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.AnimationSoundEffects
   audioSource: {fileID: 6081744692324413681}
   attackSound: {fileID: 8300000, guid: 015ea2737222855438b4e2502278b3fa, type: 3}
-  footstepSound: {fileID: 0}
+  footstepSound: {fileID: 8300000, guid: b7e6cfd25c644cd4da39aad37e73b064, type: 3}
+  knockdownSound: {fileID: 8300000, guid: 9e77e500ed4c9a64ca2abcd6f4412e9c, type: 3}
 --- !u!1 &5541825452657140451
 GameObject:
   m_ObjectHideFlags: 0
