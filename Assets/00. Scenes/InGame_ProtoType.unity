@@ -65895,8 +65895,8 @@ Tilemap:
   - first: {x: 10, y: 24, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 1
-      m_TileSpriteIndex: 1
+      m_TileIndex: 9
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66006,7 +66006,7 @@ Tilemap:
   m_TileAssetArray:
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 5e459dfc9a3d23147b09d942094ad772, type: 2}
-  - m_RefCount: 10
+  - m_RefCount: 9
     m_Data: {fileID: 11400000, guid: e6277863b0d31bb4faca8274c9f2f361, type: 2}
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 5faf6709d3e0bb84c8dbfe8f5ad99a67, type: 2}
@@ -66022,7 +66022,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 04ab7277b9948bc42b647c842b13cfab, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 9dde1e11ba02951488228931be413400, type: 2}
-  - m_RefCount: 2
+  - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: bc366f828fad4344ea8dffe52697ee64, type: 2}
   - m_RefCount: 3
     m_Data: {fileID: 11400000, guid: 4ed5bb8bc1a992c4a8191e117ccf89af, type: 2}
@@ -66041,7 +66041,7 @@ Tilemap:
   m_TileSpriteArray:
   - m_RefCount: 4
     m_Data: {fileID: -2725602468235112169, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
-  - m_RefCount: 10
+  - m_RefCount: 9
     m_Data: {fileID: -3112201495240952333, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -3287894501938062296, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
@@ -66057,7 +66057,7 @@ Tilemap:
     m_Data: {fileID: -1891854351293490900, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -7513308973027870040, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
-  - m_RefCount: 2
+  - m_RefCount: 3
     m_Data: {fileID: 843164430666745011, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: -3192236367700423139, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
@@ -67112,8 +67112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 120, y: -20}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 88.98941, y: -20}
+  m_SizeDelta: {x: 137.9787, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1819163807
 MonoBehaviour:
@@ -67162,8 +67162,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -67201,7 +67201,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 2.7362366, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -72328,6 +72328,10 @@ PrefabInstance:
     - target: {fileID: 6234101054060447288, guid: 74a1c58ff697c89469492a6779031295, type: 3}
       propertyPath: m_Name
       value: GameOverUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 6234101054060447288, guid: 74a1c58ff697c89469492a6779031295, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7887453559564519968, guid: 74a1c58ff697c89469492a6779031295, type: 3}
       propertyPath: m_text
