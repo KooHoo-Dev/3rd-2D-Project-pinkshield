@@ -65852,26 +65852,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 30, y: 20, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 11
-      m_TileSpriteIndex: 11
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 31, y: 20, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 14
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
   - first: {x: 32, y: 20, z: 0}
     second:
       serializedVersion: 2
@@ -65897,6 +65877,16 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 14
       m_TileSpriteIndex: 14
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 35, y: 20, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 11
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -66042,7 +66032,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 76ac6801db799ce4cb0c98de8945b64d, type: 2}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: abb400ceb44b938439a48d3b8ec14bbc, type: 2}
-  - m_RefCount: 5
+  - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: 8a5baa6e56f2ce549babd101cf32b075, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 707731b782b53074c96bdae52d02f819, type: 2}
@@ -66077,14 +66067,14 @@ Tilemap:
     m_Data: {fileID: 4341389825491139646, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: -5557733821071613007, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
-  - m_RefCount: 5
+  - m_RefCount: 4
     m_Data: {fileID: -6818975297270835130, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 4740802034022322910, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 6080658714805228459, guid: d5f3d07809a969d4eb6205a3b50cf6ee, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 43
+  - m_RefCount: 42
     m_Data:
       e00: 1
       e01: 0
@@ -66103,7 +66093,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 43
+  - m_RefCount: 42
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -70801,7 +70791,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.4
+  orthographic size: 6.0958962
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -72333,51 +72323,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1857290645441085459, guid: 74a1c58ff697c89469492a6779031295, type: 3}
       propertyPath: m_text
-      value: Start Over
-      objectReference: {fileID: 0}
-    - target: {fileID: 1857290645441085459, guid: 74a1c58ff697c89469492a6779031295, type: 3}
-      propertyPath: m_fontSize
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 1857290645441085459, guid: 74a1c58ff697c89469492a6779031295, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 2894189436257489013, guid: 74a1c58ff697c89469492a6779031295, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 160
+      value: Continue
       objectReference: {fileID: 0}
     - target: {fileID: 6234101054060447288, guid: 74a1c58ff697c89469492a6779031295, type: 3}
       propertyPath: m_Name
       value: GameOverUI
       objectReference: {fileID: 0}
-    - target: {fileID: 6234101054060447288, guid: 74a1c58ff697c89469492a6779031295, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6534587224712665703, guid: 74a1c58ff697c89469492a6779031295, type: 3}
-      propertyPath: m_text
-      value: "\uC5BC\uC5BC\uD558\uAD6C\uB9CC..."
-      objectReference: {fileID: 0}
-    - target: {fileID: 7784729705994087826, guid: 74a1c58ff697c89469492a6779031295, type: 3}
-      propertyPath: m_fontSize
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 7784729705994087826, guid: 74a1c58ff697c89469492a6779031295, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 24
-      objectReference: {fileID: 0}
     - target: {fileID: 7887453559564519968, guid: 74a1c58ff697c89469492a6779031295, type: 3}
       propertyPath: m_text
-      value: Continue
-      objectReference: {fileID: 0}
-    - target: {fileID: 7887453559564519968, guid: 74a1c58ff697c89469492a6779031295, type: 3}
-      propertyPath: m_fontSize
-      value: 24
-      objectReference: {fileID: 0}
-    - target: {fileID: 7887453559564519968, guid: 74a1c58ff697c89469492a6779031295, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 24
+      value: Start Over
       objectReference: {fileID: 0}
     - target: {fileID: 8644023736594896881, guid: 74a1c58ff697c89469492a6779031295, type: 3}
       propertyPath: m_Pivot.x

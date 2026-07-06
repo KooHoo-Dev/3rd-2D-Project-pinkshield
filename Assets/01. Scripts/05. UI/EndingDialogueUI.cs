@@ -36,9 +36,16 @@ namespace WatchYourBack
     /// 대사가 모두 끝나면 게임 클리어 메뉴를 켭니다
     /// </summary>
     public class EndingDialogueUI : MonoBehaviour
-    {
+    {   
+
+
         private const float ActiveAlpha = 1f;   // 지금 말하는 대상의 밝기
         private const float DimAlpha = 0.0f;   // 말하지 않는 대상의 밝기
+
+
+        [Header("= 화면 페이드 (선택 사항) =")]
+        [SerializeField] private SceneFadeIn sceneFadeIn;
+
 
         [Header("= 초상화 이미지들 =")]
         [SerializeField] private Image playerImage;
@@ -61,7 +68,7 @@ namespace WatchYourBack
         [SerializeField] private GameObject gameClearMenu;
 
         private int currentLineIndex = 0;
-
+        private bool canAcceptInput = false; // 추가: 페이드 끝나기 전엔 입력 무시
         private void Start()
         {
             // 예외 처리: 대사가 하나도 등록되지 않았다면 바로 클리어 메뉴로 넘어감
@@ -73,10 +80,21 @@ namespace WatchYourBack
             }
 
             ShowLine(0);
+
+            // 페이드 연출이 연결되어 있다면, 페이드가 끝난 뒤에야 입력을 받도록 대기
+            if (sceneFadeIn != null)
+            {
+                sceneFadeIn.OnFadeComplete += HandleFadeComplete;
+            }
+            else
+            {
+                canAcceptInput = true; // 페이드가 없으면 바로 입력 허용
+            }
         }
 
         private void Update()
         {
+            if (canAcceptInput == false) return;
             if (Keyboard.current == null) return; // 예외 처리: 키보드 장치 없음
 
             if (Keyboard.current.spaceKey.wasPressedThisFrame == true)
@@ -113,6 +131,9 @@ namespace WatchYourBack
 
             HighlightSpeaker(line.speaker);
         }
+
+       
+
 
         /// <summary>
         /// 화면에 표시할 이름을 가져옵니다 (플레이어는 별도 이름, 보스는 종류명 그대로 사용)
@@ -158,6 +179,11 @@ namespace WatchYourBack
             {
                 gameClearMenu.SetActive(true);
             }
+        }
+
+        private void HandleFadeComplete()
+        {
+            canAcceptInput = true;
         }
     }
 }

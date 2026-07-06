@@ -86,7 +86,7 @@ namespace WatchYourBack
                 return;
             }
 
-            bossManager.RealDarkermanDefeated();
+            debugTargetDarkerman.ChangeState(new EnemyKnockDownState());
         }
 
     }

@@ -1,6 +1,7 @@
 using Study.Utilities;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -39,8 +40,11 @@ namespace WatchYourBack
         [SerializeField] private float bossDuration = 0.4f;            // 각 보스가 나타나있는 시간
 
         [Header("= 오디오 설정 =")]
-        [SerializeField] private AudioSource bgmAudioSource;
+        [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip bgmClip;
+        [SerializeField] private AudioClip cursorMoveSound;
+        [SerializeField] private AudioClip selectSound;
+
         [SerializeField] private float bgmFadeOutDuration = 1.0f; // 씬 전환 시 페이드아웃 시간
 
 
@@ -125,11 +129,11 @@ namespace WatchYourBack
         /// </summary>
         private void PlayBackgroundMusic()
         {
-            if (bgmAudioSource == null || bgmClip == null) return;
+            if (audioSource == null || bgmClip == null) return;
 
-            bgmAudioSource.clip = bgmClip;
-            bgmAudioSource.loop = true;
-            bgmAudioSource.Play();
+            audioSource.clip = bgmClip;
+            audioSource.loop = true;
+            audioSource.Play();
         }
 
 
@@ -251,6 +255,7 @@ namespace WatchYourBack
             if (Keyboard.current.downArrowKey.wasPressedThisFrame)
             {
                 currentMenuIndex = (currentMenuIndex + 1) % MENU_COUNT;
+                PlayCursorMoveSound();
                 UpdateMenuDisplay();
             }
 
@@ -258,12 +263,14 @@ namespace WatchYourBack
             if (Keyboard.current.upArrowKey.wasPressedThisFrame)
             {
                 currentMenuIndex = (currentMenuIndex - 1 + MENU_COUNT) % MENU_COUNT;
+                PlayCursorMoveSound();
                 UpdateMenuDisplay();
             }
 
             // Enter 키: 메뉴 선택
             if (Keyboard.current.enterKey.wasPressedThisFrame)
             {
+                PlaySelectSound();
                 SelectMenu(currentMenuIndex);
             }
         }
@@ -439,7 +446,7 @@ namespace WatchYourBack
             AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
             asyncLoad.allowSceneActivation = false;
 
-            if (bgmAudioSource != null)
+            if (audioSource != null)
             {
                 yield return FadeOutBgm(fadeDuration);
             }
@@ -452,23 +459,41 @@ namespace WatchYourBack
         /// </summary>
         private IEnumerator FadeOutBgm(float duration)
         {
-            float startVolume = bgmAudioSource.volume;
+            float startVolume = audioSource.volume;
             float elapsedTime = 0f;
 
             while (elapsedTime < duration)
             {
                 elapsedTime += Time.deltaTime;
                 float progress = elapsedTime / duration;
-                bgmAudioSource.volume = Mathf.Lerp(startVolume, 0f, progress);
+                audioSource.volume = Mathf.Lerp(startVolume, 0f, progress);
 
                 yield return null;
             }
 
-            bgmAudioSource.volume = 0f;
-            bgmAudioSource.Stop();
+            audioSource.volume = 0f;
+            audioSource.Stop();
         }
 
+        /// <summary>
+        /// 커서 이동 효과음을 재생합니다
+        /// </summary>
+        private void PlayCursorMoveSound()
+        {
+            if (audioSource == null || cursorMoveSound == null) return; // 예외 처리: 미연결 시 조용히 무시
 
+            audioSource.PlayOneShot(cursorMoveSound);
+        }
+
+        /// <summary>
+        /// 메뉴 선택 효과음을 재생합니다
+        /// </summary>
+        private void PlaySelectSound()
+        {
+            if (audioSource == null || selectSound == null) return; // 예외 처리: 미연결 시 조용히 무시
+
+            audioSource.PlayOneShot(selectSound);
+        }
 
 
 

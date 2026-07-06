@@ -236,14 +236,9 @@ namespace WatchYourBack
                 return;
             }
 
-            // 진짜 Darkerman일때
-            if (identity != null)
-            {
-                
-                bossManager.RealDarkermanDefeated();
-            }
-
-            else if (roomIndex >= 0) // 일반 방 보스
+            // 진짜 Darkerman이 아닌 일반 방 보스만 여기서 진행 상황을 기록
+            // (진짜 Darkerman의 처리는 넉다운 연출이 끝난 뒤 PlayKnockDownRoutine에서 처리)
+            if (identity == null && roomIndex >= 0)
             {
                 GameProgressManager.Instance.MarkRoomCleared(roomIndex);
             }
@@ -267,6 +262,15 @@ namespace WatchYourBack
             Anim.SetTrigger("OnKnockDown");
 
             yield return new WaitForSeconds(PostTriggerDelay);
+
+            // 진짜 Darkerman이라면, 모든 넉다운 연출이 끝난 이 시점에만 엔딩 씬으로 전환
+            if (identity != null && identity.IsRealDarkerman == true && bossManager != null)
+            {
+                bossManager.RealDarkermanDefeated();
+                yield break; // 씬이 곧 전환되므로 아래 비활성화는 불필요
+            }
+
+
             gameObject.SetActive(false);
         }
 

@@ -14,6 +14,13 @@ namespace WatchYourBack
 
         private void Start()
         {
+
+            // 예외 처리: SoundManager가 아직 준비 안 된 극단적 상황 대비
+            if (SoundManager.Instance != null)
+            {
+                SoundManager.Instance.ResetCombatMusicState();
+            }
+
             int clearedRoomIndex = GameProgressManager.Instance.LastClearedRoomIndex;
 
             // 클리어한 방이 없으면 새 게임이므로 초기화할 것이 없음

@@ -1321,7 +1321,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1482280970}
-  - component: {fileID: 1482280971}
   - component: {fileID: 1482280972}
   - component: {fileID: 1482280973}
   m_Layer: 5
@@ -1350,18 +1349,6 @@ RectTransform:
   m_AnchoredPosition: {x: 32759.996, y: 21739.998}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1482280971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482280969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b46f5f489ab6e4f2a90a70aee47d1a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.GameMenu
 --- !u!114 &1482280972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1392,8 +1379,10 @@ MonoBehaviour:
   maxAlpha: 1
   delayBetweenElements: 0.6
   bossDuration: 1.3
-  bgmAudioSource: {fileID: 1482280973}
+  audioSource: {fileID: 1482280973}
   bgmClip: {fileID: 8300000, guid: 6c4fcd8da13035e4cb745ee7dbb270bf, type: 3}
+  cursorMoveSound: {fileID: 8300000, guid: 85d0c768101f7d847a39fc7a92cbaf0c, type: 3}
+  selectSound: {fileID: 8300000, guid: 67d44ece48c25f84191a14b44c44c1eb, type: 3}
   bgmFadeOutDuration: 1
 --- !u!82 &1482280973
 AudioSource:
@@ -1408,9 +1397,9 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

@@ -96,11 +96,6 @@ namespace WatchYourBack
         }
 
 
-
-
-
-
-
         public void PlayBgm(AudioClip clip, bool loop = true)
         {
             if (clip == null) return;
@@ -120,6 +115,28 @@ namespace WatchYourBack
             if (clip == null) return;
             sfxSource.PlayOneShot(clip);
         }
+
+        /// <summary>
+        /// 전투 BGM 카운터를 강제로 초기화합니다
+        /// 씬이 재로드될 때, 이전 플레이에서 정리되지 못한 카운트가 남아있을 수 있어 호출합니다
+        /// </summary>
+        public void ResetCombatMusicState()
+        {
+            engagedEnemyCount = 0;
+
+            if (bgmFadeCoroutine != null)
+            {
+                StopCoroutine(bgmFadeCoroutine);
+            }
+
+            if (bgmSource != null && normalBgmClip != null)
+            {
+                bgmSource.clip = normalBgmClip;
+                bgmSource.volume = 1f;
+                bgmSource.Play();
+            }
+        }
+
     }
 }
 

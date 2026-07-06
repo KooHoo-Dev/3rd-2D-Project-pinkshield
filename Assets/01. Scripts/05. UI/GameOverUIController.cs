@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
@@ -21,6 +22,11 @@ namespace WatchYourBack
         [Header("= 선택 표시 밝기 =")]
         [SerializeField] private float selectedAlpha = 1f;      // 선택된 텍스트의 밝기(불투명도)
         [SerializeField] private float unselectedAlpha = 0.4f;  // 선택 안 된 텍스트의 밝기
+
+        [Header("= 커서 이동/선택 효과음 =")]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip cursorMoveSound;
+        [SerializeField] private AudioClip selectSound;
 
         // 현재 커서가 위치한 메뉴 번호 (0~2)
         private int currentMenuIndex = 0;
@@ -50,17 +56,20 @@ namespace WatchYourBack
             if (Keyboard.current.downArrowKey.wasPressedThisFrame == true)
             {
                 currentMenuIndex = (currentMenuIndex + 1) % MenuCount;
+                PlayCursorMoveSound();
                 UpdateMenuHighlight();
             }
 
             if (Keyboard.current.upArrowKey.wasPressedThisFrame == true)
             {
                 currentMenuIndex = (currentMenuIndex - 1 + MenuCount) % MenuCount;
+                PlayCursorMoveSound();
                 UpdateMenuHighlight();
             }
 
             if (Keyboard.current.spaceKey.wasPressedThisFrame == true)
             {
+                PlaySelectSound();
                 SelectCurrentMenu();
             }
         }
@@ -108,11 +117,11 @@ namespace WatchYourBack
             switch (currentMenuIndex)
             {
                 case 0:
-                    RestartCurrentScene();
+                    ContinueFromLastRoom();
                     break;
 
-                case 1:
-                    ContinueFromLastRoom();
+                case 1:                    
+                    RestartCurrentScene();
                     break;
 
                 case 2:
@@ -150,5 +159,26 @@ namespace WatchYourBack
             GameProgressManager.Instance.ResetProgress();
             SceneManager.LoadScene("GameMenu");
         }
+
+        /// <summary>
+        /// 커서 이동 효과음을 재생합니다
+        /// </summary>
+        private void PlayCursorMoveSound()
+        {
+            if (audioSource == null || cursorMoveSound == null) return; // 예외 처리: 미연결 시 조용히 무시
+
+            audioSource.PlayOneShot(cursorMoveSound);
+        }
+
+        /// <summary>
+        /// 메뉴 선택 효과음을 재생합니다
+        /// </summary>
+        private void PlaySelectSound()
+        {
+            if (audioSource == null || selectSound == null) return; // 예외 처리: 미연결 시 조용히 무시
+
+            audioSource.PlayOneShot(selectSound);
+        }
+
     }
 }
