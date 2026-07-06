@@ -216,7 +216,12 @@ namespace WatchYourBack
         {
             // 플레이어 공격 히트박스가 없으면 패스
             if (collision.CompareTag("PlayerAttack") == false) return;
-            if (IsKnockDown == true) return;
+            if (IsKnockDown == true) return; // 이미 넉다운 확정된 죽은 또 죽일 수 없음
+
+            // 예외 처리: 공격을 가한 플레이어가 이미 다운된 상태라면 이 공격은 무효 처리
+            IKnockDownStatus attackerStatus = collision.GetComponentInParent<IKnockDownStatus>();
+            if (attackerStatus != null && attackerStatus.IsKnockDown == true) return;
+
             if (TryLockCombat() == false) return; // 이미 적이 먼저 플레이어를 맞춘 경우 패스
 
             // 다커맨이 가짜가 참일때 = identity가 비어있거나 isRealDarekman 이 거짓일때 

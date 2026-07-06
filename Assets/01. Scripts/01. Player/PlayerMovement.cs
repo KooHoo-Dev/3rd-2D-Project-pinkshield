@@ -85,7 +85,6 @@ namespace WatchYourBack
             isKnockDown = true;
             rb.linearVelocity = Vector2.zero; // 즉시 정지
             
-            animator.SetTrigger("OnKnockDown"); // 애니메이션 재생
 
             StartCoroutine(KnockDownRoutine());
             
