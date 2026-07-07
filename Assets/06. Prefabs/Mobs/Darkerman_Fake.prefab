@@ -433,6 +433,7 @@ MonoBehaviour:
   audioSource: {fileID: 3249417638343910403}
   attackSound: {fileID: 8300000, guid: 38683d6727d93ba43bc1dbfcdabe61c4, type: 3}
   footstepSound: {fileID: 0}
+  knockdownSound: {fileID: 0}
 --- !u!1 &2562313068736936729
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,7 +896,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8584906, g: 0.25959566, b: 0.08503916, a: 0}
+  m_Color: {r: 0.8584906, g: 0.25959566, b: 0.08503916, a: 0.011764706}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
