@@ -14,7 +14,7 @@ namespace WatchYourBack
         private const int DarkerCurtainAlpha = 213;
         private const int ActiveCameraPriority = 20;
         private const int InactiveCameraPriority = 0;
-
+        private const float DoorTime = 2.0f;
 
 
         [Header("Audio")]
@@ -44,7 +44,7 @@ namespace WatchYourBack
         [SerializeField] private GameObject secondDoor; //Watchman 처치 시 비활성화
         [SerializeField] private GameObject thirdDoor; //Ratman 처치 시 비활성화
 
-        private float doorTime = 2.0f;
+        
 
 
         private void Start()
@@ -146,7 +146,7 @@ namespace WatchYourBack
             OpenDoorInstantly(door);
 
             // 4. 2초간 문을 보여준 뒤 다시 플레이어에게 복귀 
-            yield return new WaitForSeconds(doorTime);
+            yield return new WaitForSeconds(DoorTime);
             doorCam.Priority = InactiveCameraPriority;
         }
 

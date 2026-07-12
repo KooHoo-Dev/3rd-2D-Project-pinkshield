@@ -11,7 +11,7 @@ namespace WatchYourBack
     /// </summary>
     public class GameOverUIController : MonoBehaviour
     {
-        // 메뉴 개수 (0: 처음부터 시작, 1: 이어하기, 2: 게임메뉴로 돌아가기)
+        // 메뉴 개수 (0: 이어하기, 1: 처음부터 하기, 2: 게임메뉴로 돌아가기)
         private const int MenuCount = 3;
 
         [Header("= 메뉴 선택지 텍스트들 =")]

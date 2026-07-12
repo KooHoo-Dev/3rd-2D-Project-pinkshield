@@ -39,7 +39,7 @@ namespace WatchYourBack
         /// </summary>
         private void ApplyClearedRooms(int clearedRoomIndex)
         {
-            Room[] allRooms = FindObjectsOfType<Room>();
+            Room[] allRooms = FindObjectsByType<Room>(FindObjectsSortMode.None);
 
             foreach (Room room in allRooms)
             {
@@ -56,7 +56,7 @@ namespace WatchYourBack
         private void MovePlayerToNextRoom(int clearedRoomIndex)
         {
             int nextRoomIndex = clearedRoomIndex + 1;
-            Room[] allRooms = FindObjectsOfType<Room>();
+            Room[] allRooms = FindObjectsByType<Room>(FindObjectsSortMode.None);
 
             foreach (Room room in allRooms)
             {

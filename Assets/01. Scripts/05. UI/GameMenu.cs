@@ -12,9 +12,12 @@ namespace WatchYourBack
     /// 메뉴의 시작 화면부터 선택까지의 전체 흐름을 담당합니다.
     /// </summary>
     public class GameMenu : MonoBehaviour
-    {
+    {   
+        
+        private const int MenuCount = 3;                        // 메뉴 개수
+        
         // =================== 인스펙터에 할당할 오브젝트들 ===================
-
+        
         [Header("= Boss 설정 =")]
         [SerializeField] private GameObject[] bosses; // 첫 화면에 순서대로 나타날 보스들
 
@@ -61,7 +64,7 @@ namespace WatchYourBack
         // =================== 필드 변수들 ===================
         private GameState currentState = GameState.Initializing; // 현재 게임 상태
         private int currentMenuIndex = 0;                        // 현재 선택된 메뉴 (0: 시작, 1: 옵션, 2: 종료)
-        private const int MENU_COUNT = 3;                        // 메뉴 개수
+        
 
         // 코루틴 참조 (나중에 중지하기 위해 저장)
         private Coroutine pressEnterPulseCoroutine;
@@ -214,7 +217,8 @@ namespace WatchYourBack
             bool enterPressed = false;
 
             while (enterPressed == false)
-            {
+            {   
+                
                 // 키보드 입력 시스템으로 Enter 키 감지
                 if (Keyboard.current.enterKey.wasPressedThisFrame)
                 {
@@ -254,7 +258,7 @@ namespace WatchYourBack
             // 아래 방향키: 다음 메뉴로 이동
             if (Keyboard.current.downArrowKey.wasPressedThisFrame)
             {
-                currentMenuIndex = (currentMenuIndex + 1) % MENU_COUNT;
+                currentMenuIndex = (currentMenuIndex + 1) % MenuCount;
                 PlayCursorMoveSound();
                 UpdateMenuDisplay();
             }
@@ -262,7 +266,7 @@ namespace WatchYourBack
             // 위 방향키: 이전 메뉴로 이동
             if (Keyboard.current.upArrowKey.wasPressedThisFrame)
             {
-                currentMenuIndex = (currentMenuIndex - 1 + MENU_COUNT) % MENU_COUNT;
+                currentMenuIndex = (currentMenuIndex - 1 + MenuCount) % MenuCount;
                 PlayCursorMoveSound();
                 UpdateMenuDisplay();
             }
