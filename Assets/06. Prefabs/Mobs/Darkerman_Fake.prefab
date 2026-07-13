@@ -651,7 +651,6 @@ GameObject:
   - component: {fileID: 837755617982721798}
   - component: {fileID: 7396309473344486556}
   - component: {fileID: 6833704668628761715}
-  - component: {fileID: 5200544612329813824}
   m_Layer: 0
   m_Name: Darkerman_Fake
   m_TagString: Untagged
@@ -800,20 +799,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81850c7bfdfa6e84489c8a90ea4f15dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.DarkermanIdentity
-  isRealDarkerman: 1
---- !u!114 &5200544612329813824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6582014924035769864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c9f40d520bd846648bd52e9758ae1259, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::WatchYourBack.DarkermanInvisibleEffect
-  spriteRenderer: {fileID: 5435844330639611840}
+  isRealDarkerman: 0
 --- !u!1 &6722531102174546762
 GameObject:
   m_ObjectHideFlags: 0

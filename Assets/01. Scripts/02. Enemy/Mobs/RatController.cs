@@ -62,7 +62,7 @@ namespace WatchYourBack
 
         private void ratMove()
         {
-            // moveMentRange 사이를 왕복하는 값
+            // movementRange 사이를 왕복하는 값
             float pingPongX = Mathf.PingPong(Time.time * moveSpeed, movementRange *2);
 
             // 시작 위치와 왼쪽 끝에서부터 pingPongX만큼 더하여 실제 목표 X좌표 계산
