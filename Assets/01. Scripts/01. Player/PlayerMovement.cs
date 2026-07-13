@@ -91,7 +91,9 @@ namespace WatchYourBack
         }
 
         
-
+        /// <summary>
+        ///  테스트용 재시작 함수
+        /// </summary>
         public void Restart()
         {   
 
@@ -147,17 +149,12 @@ namespace WatchYourBack
         // attack 기능 재 수정 필요 
         private void Attack()
         {
-
-
+             // 공격 쿨타임 중이 아닐 때만 트리거 실행 
             if (SimpleInput.GetKeyDown(Key.Space) && canAttack)
-                    {
-                        // 공격 쿨타임 중이 아닐 때만 트리거 실행 
-                        if (SimpleInput.GetKeyDown(Key.Space) && canAttack)
-                        {
-                            StartCoroutine(AttackCooldownRoutine());
-                        }
-                    }
-
+            {
+                StartCoroutine(AttackCooldownRoutine());
+            }
+                    
         }
 
         private IEnumerator AttackCooldownRoutine()
@@ -173,7 +170,10 @@ namespace WatchYourBack
 
 
         
-
+        /// <summary>
+        /// 넉다운 코루틴
+        /// </summary>
+        /// <returns></returns>
         private IEnumerator KnockDownRoutine()
         {
             if (hitCutScene != null)
