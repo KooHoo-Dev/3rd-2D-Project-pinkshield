@@ -22,8 +22,9 @@ namespace WatchYourBack
         public IEnumerator Execute(EnemyStateManager manager)
         {
             if (manager == null) yield break;
-
+            
             // 1. 공격 실행
+            
             manager.Anim.SetBool("IsAttack", true);
             Debug.Log("적 일반 공격 실행");
 

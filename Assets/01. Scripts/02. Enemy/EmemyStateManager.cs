@@ -118,7 +118,9 @@ namespace WatchYourBack
 
 
         public void ChangeState(IEnemyState newState)
-        {
+        {   
+            if (IsKnockDown == true) return;
+
             if (currentState != null) currentState.Exit(this); // 상태 종료 처리 [7]
 
             if (stateCoroutine != null) StopCoroutine(stateCoroutine); // 기존 루프 중단 [8]
